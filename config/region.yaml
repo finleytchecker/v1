@@ -1,0 +1,12 @@
+# Region config. Left empty on purpose: fill this in yourself.
+# Every script reads the region from this file.
+name: ""
+# Bounding box in decimal degrees (WGS84). Example: min_lat: 40.1
+bounding_box:
+  min_lat: null
+  max_lat: null
+  min_lon: null
+  max_lon: null
+# Where real data comes from for this region (used in Phase 5).
+# Example entry:  - {name: "PubDAS", type: das, url: "..."}
+data_sources: []

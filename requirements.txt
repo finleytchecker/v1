@@ -1,0 +1,7 @@
+numpy
+scipy
+scikit-learn
+pyyaml
+streamlit
+pytest
+# Added in later phases: torch, obspy, devito (optional)

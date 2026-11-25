@@ -1,0 +1,19 @@
+# General settings for V1.
+project_name: V1
+
+# SQLite database holding every run log (relative to the project folder).
+database: runs/v1.sqlite
+
+# Self-teaching loop settings (used from Phase 2 on).
+loop:
+  max_rounds: 10            # stop after this many rounds at most
+  patience: 3               # stop if accuracy hasn't improved for this many rounds
+  min_improvement: 0.002    # smaller gains than this don't count as "improving"
+  test_fraction: 0.2        # share of data hidden from the model each round
+  holdout_fraction: 0.15    # final hold-out set: the loop NEVER sees it
+  mistake_weight: 2.0       # how much extra weight a wrong example gets next round
+  synth_per_mistake: 3      # new synthetic examples generated per mistake
+  seed: 42
+
+# Name for this computer in the dashboard. Leave empty to use the hostname.
+machine_name: ""

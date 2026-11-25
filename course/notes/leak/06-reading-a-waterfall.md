@@ -28,7 +28,7 @@ A leak is the opposite of traffic: **zero slope, infinite duration, narrow frequ
 - On a waterfall, a vehicle trajectory is approximately a straight line and the absolute value of its slope is the vehicle speed. [source: wang-2024-traffic-das]
 - Vehicles on Sand Hill Road were measured at about 15 m/s, under a 15.65 m/s (35 mph) limit. [source: lindsey-2020-covid-traffic]
 - Each car produces a localized strain wavelet that migrates along the fibre at road speed. [source: lindsey-2020-covid-traffic]
-- A streak covering 300 m of cable in 20 s indicates an apparent speed of 15 m/s (54 km/h). [source: wang-2024-traffic-das]
+- Worked example: a streak covering 300 m of cable in 20 s indicates an apparent speed of 15 m/s (54 km/h). [source: wang-2024-traffic-das]
 - Stajanca et al. localized a leak by integrating 500–5000 Hz spectral power per fibre bin — an energy waterfall concept. [source: stajanca-2018-das-leak]
 - DASCore plots a waterfall in one call: patch.viz.waterfall(). [source: dascore]
 

@@ -30,7 +30,7 @@ Python libraries hide most of this: **DASCore** (Patch = one block, Spool = coll
 - In DASCore, a Patch holds contiguous data plus metadata and a Spool is a collection of patches. [source: dascore]
 - quakeflow_das stores each event as a 2-D float32 array (channels × time) in microstrain/s with dt_s and dx_m attributes. [source: quakeflow-das-hf]
 - A single 60 s OOI DAS file with 32,600 channels at 200 Hz is about 850 MB. [source: das4whales-tutorial]
-- 10,000 channels × 500 Hz × 4 bytes ≈ 20 MB/s ≈ 1.7 TB/day. [source: ajo-franklin-2019-dark-fiber]
+- Worked example: 10,000 channels × 500 Hz × 4 bytes ≈ 20 MB/s ≈ 1.7 TB/day, the same order as FOSSA's ~12,000 channels at 500 Hz. [source: ajo-franklin-2019-dark-fiber]
 
 ## Sources
 dascore, xdas, daspy, lightguide, pubdas-spica-2023, ajo-franklin-2019-dark-fiber, shao-2025-ai-das-photonix, quakeflow-das-hf, das4whales-tutorial, intro-to-das-data

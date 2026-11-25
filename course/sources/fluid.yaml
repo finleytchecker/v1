@@ -1,0 +1,959 @@
+# Fluid module source catalog (pore-fluid detection from seismic).
+# verified: true  = the page was fetched during research (2026-11-25).
+# verified: false = seen only in search results, or the fetch was blocked (wiki.seg.org returned 403 to automated fetches).
+# Sizes are copied from the hosting page when it gave them; null = not stated. Nothing was downloaded.
+
+# ---------------------------------------------------------------- courses / lecture notes
+- id: mit-12-510-seismology
+  title: "MIT OCW 12.510 Introduction to Seismology (Spring 2010)"
+  url: https://ocw.mit.edu/courses/12-510-introduction-to-seismology-spring-2010/pages/lecture-notes/
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "CC BY-NC-SA 4.0 (MIT OCW standard)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Student-scribed lecture notes from Spring 2008 on stress, strain, the wave equation, Snell's law, critical reflection, surface waves and anisotropy. They are good background for P and S waves.
+  concepts: [stress-strain, wave-equation, p-waves, s-waves, snells-law, critical-angle]
+
+- id: mavko-seismic-velocity-slides
+  title: "Parameters That Influence Seismic Velocity (Stanford Rock Physics Lab, G. Mavko) - course slides"
+  url: https://moodle2.units.it/pluginfile.php/781772/mod_resource/content/1/SeismicVelocity_Mavko.pdf
+  kind: lecture-notes
+  topic: fluid
+  free: true
+  license: "unknown (Stanford course material, re-hosted on a University of Trieste Moodle)"
+  size: "6.9 MB"
+  level: intermediate
+  verified: true
+  summary: Mavko's GP262 slide deck on how pressure, porosity, cracks, clay and pore fluid change Vp and Vs. It includes a velocity and density table for common rocks and fluids, Gassmann examples and Batzle-Wang notes.
+  concepts: [rock-physics, velocity-table, pore-pressure, gassmann, batzle-wang, fluid-modulus]
+
+- id: stanford-gp262
+  title: "Stanford GP 262 Rock Physics (course page)"
+  url: https://geophysics.stanford.edu/academics-admissions/autumn-quarter-courses-24-25/gp-262-rock-physics
+  kind: course
+  topic: fluid
+  free: false
+  license: "n/a (enrolled-student course; page only)"
+  size: null
+  level: advanced
+  verified: false
+  summary: Course page for Stanford's rock physics class (instructor T. Mukerji). It is useful as a syllabus outline. The materials themselves are not public.
+  concepts: [rock-physics, syllabus]
+
+- id: stanford-rph2-codes
+  title: "The Rock Physics Handbook, 2nd ed. - Stanford SRB companion page (MATLAB codes)"
+  url: https://pangea.stanford.edu/research/srb/books/RPHII/
+  kind: code
+  topic: fluid
+  free: true
+  license: "unknown"
+  size: null
+  level: advanced
+  verified: false
+  summary: Companion page for the Mavko, Mukerji and Dvorkin handbook, with MATLAB codes for many of its rock-physics models. The book itself is not free. The page returned 503 when fetched.
+  concepts: [rock-physics, gassmann, bounds, contact-models, matlab]
+
+- id: glover-petrophysics-notes
+  title: "Petrophysics MSc Course Notes (P. Glover, Leeds)"
+  url: https://homepages.see.leeds.ac.uk/~earpwjg/PG_EN/CD%20Contents/GGL-66565%20Petrophysics%20English/Contents.PDF
+  kind: lecture-notes
+  topic: fluid
+  free: true
+  license: "All rights reserved; viewable online, no copying without permission"
+  size: null
+  level: beginner
+  verified: false
+  summary: Full petrophysics course covering porosity, permeability, saturation, Archie's law and the wireline logs (sonic, density, neutron, resistivity). It also has exercises with answers. The server returned 503 during research.
+  concepts: [well-logs, archie, porosity, resistivity, sonic, density-log, neutron-log]
+
+# ---------------------------------------------------------------- textbooks / wiki books
+- id: seg-wiki-yilmaz-avo
+  title: "Yilmaz, Seismic Data Analysis - AVO chapter (SEG Wiki)"
+  url: https://wiki.seg.org/wiki/Analysis_of_amplitude_variation_with_offset
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA (SEG Wiki)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: The free wiki edition of Yilmaz's processing textbook. Its AVO pages cover the Aki-Richards and Shuey equations, AVO processing, AVO attributes and crossplot interpretation. wiki.seg.org blocked automated fetches.
+  concepts: [avo, aki-richards, shuey, avo-attributes, crossplot, processing]
+
+- id: seg-wiki-avo-equations
+  title: "AVO equations (SEG Wiki, Yilmaz)"
+  url: https://wiki.seg.org/wiki/AVO_equations
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA (SEG Wiki)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: Derives the Aki-Richards linearised reflection coefficient and Shuey's rewrite in terms of intercept, gradient and curvature.
+  concepts: [zoeppritz, aki-richards, shuey]
+
+- id: seg-wiki-avo-attributes
+  title: "Derivation of AVO attributes by prestack amplitude inversion (SEG Wiki)"
+  url: https://wiki.seg.org/wiki/Derivation_of_AVO_attributes_by_prestack_amplitude_inversion
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA (SEG Wiki)"
+  size: null
+  level: advanced
+  verified: false
+  summary: Shows how intercept, gradient and related attributes are fitted from gathers, and defines AVO anomaly classes 1 to 3.
+  concepts: [avo-classes, intercept, gradient, prestack-inversion]
+
+- id: seg-dict-avo
+  title: "SEG Dictionary: Amplitude variation with angle/offset (AVA/AVO)"
+  url: https://wiki.seg.org/wiki/Dictionary:Amplitude_variation_with_angle/offset_(AVA/AVO)
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA (SEG Wiki)"
+  size: null
+  level: beginner
+  verified: false
+  summary: Sheriff's dictionary entry defining AVO and AVA and the AVO classes, including Class 4 (low-impedance sand whose amplitude falls with offset), with references to Rutherford and Williams (1989).
+  concepts: [avo, avo-classes, class-4]
+
+- id: seg-wiki-dhi
+  title: "Direct hydrocarbon indicators (SEG Wiki)"
+  url: https://wiki.seg.org/wiki/Direct_Hydrocarbon_Indicators
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA (SEG Wiki)"
+  size: null
+  level: beginner
+  verified: false
+  summary: Defines bright spots and flat spots, and notes that a flat spot needs a reservoir thicker than the vertical resolution. It warns that every DHI can also be caused by things other than hydrocarbons.
+  concepts: [dhi, bright-spot, flat-spot, dim-spot, polarity-reversal]
+
+- id: seg-wiki-attenuation
+  title: "Seismic attenuation (SEG Wiki)"
+  url: https://wiki.seg.org/wiki/Seismic_attenuation
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA (SEG Wiki)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: Explains Q as a dimensionless quality factor and lists typical Qp and Qs values for shale, sandstone and granite. It describes attenuation as an attribute sensitive to hydrocarbons and fluid-filled fractures.
+  concepts: [attenuation, q-factor, qp, qs]
+
+- id: seg-wiki-gassmann
+  title: "Gassmann equation (SEG Wiki, filed as 'Gassman equation')"
+  url: https://wiki.seg.org/wiki/Gassman_equation
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA (SEG Wiki)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: Short wiki entry giving the fluid-substitution procedure based on Gassmann's equation.
+  concepts: [gassmann, fluid-substitution]
+
+- id: wikipedia-gassmann
+  title: "Gassmann's equation (Wikipedia)"
+  url: https://en.wikipedia.org/wiki/Gassmann%27s_equation
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Gives the Gassmann substitution equations, the shear-modulus and density rules, Brown-Korringa, the moduli-velocity relations and the seven assumptions, including why sonic (~20 kHz) data can break them.
+  concepts: [gassmann, brown-korringa, moduli, assumptions, frequency]
+
+- id: wikipedia-avo
+  title: "Amplitude versus offset (Wikipedia)"
+  url: https://en.wikipedia.org/wiki/Amplitude_versus_offset
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA 4.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: Plain introduction to AVO, covering Ostrander's gas-sand observation, the Shuey approximation, intercept-gradient crossplots and why AVO anomalies can mislead.
+  concepts: [avo, shuey, crossplot, history]
+
+- id: wikipedia-zoeppritz
+  title: "Zoeppritz equations (Wikipedia)"
+  url: https://en.wikipedia.org/wiki/Zoeppritz_equations
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Defines the Zoeppritz equations and gives Shuey's three-term approximation with explicit formulas for R(0), G and F. The two-term form is limited to angles below about 30 degrees.
+  concepts: [zoeppritz, shuey, reflection-coefficient]
+
+- id: wikipedia-bright-spot
+  title: "Bright spot (Wikipedia)"
+  url: https://en.wikipedia.org/wiki/Bright_spot
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA 4.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: Explains bright spots as an impedance-contrast increase when hydrocarbons replace brine under shale. It also says why they fade with depth as compaction makes sand and shale impedances cross over, after which dim spots matter.
+  concepts: [bright-spot, dim-spot, impedance-crossover]
+
+- id: wikipedia-flat-spot
+  title: "Flat spot (reflection seismology) (Wikipedia)"
+  url: https://en.wikipedia.org/wiki/Flat_spot_(reflection_seismology)
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA 4.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: Defines a flat spot as a horizontal reflection from a gas-liquid contact that cuts across dipping layers. It lists look-alikes (mineral changes, multiples) and says to check flatness after depth conversion.
+  concepts: [flat-spot, fluid-contact, dhi]
+
+- id: wikipedia-q
+  title: "Anelastic attenuation factor (Wikipedia)"
+  url: https://en.wikipedia.org/wiki/Anelastic_attenuation_factor
+  kind: textbook
+  topic: shared
+  free: true
+  license: "CC BY-SA 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Defines Q through energy lost per cycle, gives the amplitude decay A = A0 exp(-pi f t / Q), and explains the spectral-ratio method for measuring Q.
+  concepts: [q-factor, attenuation, spectral-ratio]
+
+- id: wikipedia-seismic-inversion
+  title: "Seismic inversion (Wikipedia)"
+  url: https://en.wikipedia.org/wiki/Seismic_inversion
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Overview of post-stack (sparse-spike) acoustic impedance inversion, pre-stack simultaneous inversion for P-impedance, S-impedance and density, and geostatistical inversion. It also covers how these help separate lithology, porosity and fluid effects.
+  concepts: [inversion, acoustic-impedance, simultaneous-inversion, geostatistics]
+
+- id: wikipedia-archie
+  title: "Archie's law (Wikipedia)"
+  url: https://en.wikipedia.org/wiki/Archie%27s_law
+  kind: textbook
+  topic: fluid
+  free: true
+  license: "CC BY-SA 4.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: The equation linking formation resistivity to porosity, water resistivity and water saturation, with typical a, m and n values.
+  concepts: [archie, resistivity, water-saturation]
+
+- id: wikipedia-poisson
+  title: "Poisson's ratio (Wikipedia)"
+  url: https://en.wikipedia.org/wiki/Poisson%27s_ratio
+  kind: textbook
+  topic: shared
+  free: true
+  license: "CC BY-SA 4.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: Definition of Poisson's ratio and its relation to the elastic moduli and wave speeds.
+  concepts: [poissons-ratio, vp-vs, elastic-moduli]
+
+- id: slb-defining-porosity
+  title: "The Defining Series: Measuring Porosity Downhole (SLB Oilfield Review)"
+  url: https://www.slb.com/resource-library/oilfield-review/defining-series/defining-porosity
+  kind: tutorial
+  topic: fluid
+  free: true
+  license: "unknown (free to read)"
+  size: null
+  level: beginner
+  verified: true
+  summary: Short illustrated explainer of density, neutron and sonic porosity tools, including the classic neutron-density gas crossover.
+  concepts: [density-log, neutron-log, sonic-log, gas-effect]
+
+# ---------------------------------------------------------------- tutorials / notebooks
+- id: seg-tut-petrophysics-1
+  title: "Seismic petrophysics, part 1 (A. Amato del Monte, The Leading Edge, Apr 2015) - notebook"
+  url: https://github.com/seg/tutorials-2015/tree/master/1504_Seismic_petrophysics_1
+  kind: notebook
+  topic: fluid
+  free: true
+  license: "CC BY-SA (text and notebook), Apache-2.0 (code)"
+  size: "~0.3 MB notebook + qsiwell2.csv"
+  level: beginner
+  verified: true
+  summary: Loads a real well (Vp, Vs, density, Vsh, Sw, porosity) with pandas, builds a litho-fluid class log and makes Ip vs Vp/Vs crossplots. It is a good first notebook for the Fluid module.
+  concepts: [well-logs, crossplot, litho-fluid-class, vp-vs, impedance]
+
+- id: seg-tut-petrophysics-2
+  title: "Seismic petrophysics, part 2 (A. Amato del Monte, The Leading Edge, Jun 2015) - notebook"
+  url: https://github.com/seg/tutorials-2015/tree/master/1506_Seismic_petrophysics_2
+  kind: notebook
+  topic: fluid
+  free: true
+  license: "CC BY-SA (text and notebook), Apache-2.0 (code)"
+  size: "~0.5 MB notebook + csv"
+  level: intermediate
+  verified: true
+  summary: Implements Gassmann fluid replacement and Voigt-Reuss-Hill mixing in about 20 lines of numpy, then turns brine sands into oil and gas sands. Gives the mineral and fluid constants (quartz K=37 GPa, brine K=2.8 GPa, gas K=0.06 GPa).
+  concepts: [gassmann, fluid-substitution, voigt-reuss-hill, reuss-fluid-mix, crossplot]
+
+- id: seg-tutorials-2014
+  title: "SEG Leading Edge tutorials 2014 (incl. 'Thin beds, tuning, and AVO', W. Hamlyn; 'Well-tie calculus', E. Bianco)"
+  url: https://github.com/seg/tutorials-2014
+  kind: notebook
+  topic: fluid
+  free: true
+  license: "CC BY-SA 3.0 (articles/notebooks), Apache-2.0 (code)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Open notebooks from The Leading Edge tutorial column. Hamlyn's piece shows how thin-bed tuning distorts AVO intercept and gradient. Bianco's well-tie notebook links logs to seismic.
+  concepts: [avo, tuning, thin-beds, well-tie, synthetic-seismogram]
+
+- id: seg-tutorials-2015
+  title: "SEG Leading Edge tutorials 2015 repository"
+  url: https://github.com/seg/tutorials-2015
+  kind: notebook
+  topic: shared
+  free: true
+  license: "CC BY-SA (articles/notebooks), Apache-2.0 (code)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: The 2015 tutorial notebooks, including both seismic petrophysics parts plus coherence and other attribute tutorials.
+  concepts: [tutorials, rock-physics, attributes]
+
+- id: aadm-geophysical-notes
+  title: "geophysical_notes (A. Amato del Monte) - Jupyter notebooks"
+  url: https://github.com/aadm/geophysical_notes
+  kind: notebook
+  topic: fluid
+  free: true
+  license: "CC BY-NC 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Notebooks on rock-physics modelling and templates, AVO projections, AVO attributes, Class 4 AVO, elastic impedance and anisotropic AVO, plus an interactive AVO-class explorer. The author calls them partly obsolete, but they are still a strong set of worked examples.
+  concepts: [rock-physics-templates, avo, avo-classes, elastic-impedance, fluid-substitution]
+
+- id: aadm-avo-explorer
+  title: "avo_explorer (interactive AVO class notebook)"
+  url: https://github.com/aadm/avo_explorer
+  kind: notebook
+  topic: fluid
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: false
+  summary: Interactive notebook with sliders to change the shale and sand properties and watch the AVO curve move between classes. It is built on bruges.
+  concepts: [avo-classes, interactive, gassmann]
+
+- id: devito-tutorials
+  title: "Devito seismic tutorials (elastic, viscoelastic, viscoacoustic notebooks)"
+  url: https://github.com/devitocodes/devito/tree/main/examples/seismic/tutorials
+  kind: notebook
+  topic: fluid
+  free: true
+  license: "MIT"
+  size: null
+  level: advanced
+  verified: true
+  summary: Twenty-plus notebooks. 01_modelling covers acoustic modelling, 06_elastic and 06_elastic_varying_parameters cover the staggered-grid velocity-stress elastic equation, 09_viscoelastic and 11_viscoacoustic add Q attenuation, and 07.1 covers numerical dispersion.
+  concepts: [finite-difference, elastic-modeling, viscoelastic, attenuation, staggered-grid, devito]
+
+- id: devito-project
+  title: "Devito project home"
+  url: https://www.devitoproject.org/
+  kind: code
+  topic: shared
+  free: true
+  license: "MIT"
+  size: null
+  level: advanced
+  verified: true
+  summary: Python DSL that generates optimised finite-difference code from symbolic PDEs. It is the recommended engine for elastic and viscoelastic wave simulation in V1.
+  concepts: [finite-difference, code-generation, wave-equation]
+
+- id: pylops-prestack
+  title: "PyLops tutorial 08: Pre-stack (AVO) inversion"
+  url: https://pylops.readthedocs.io/en/latest/tutorials/prestack.html
+  kind: tutorial
+  topic: fluid
+  free: true
+  license: "LGPL-3.0 (PyLops)"
+  size: null
+  level: advanced
+  verified: true
+  summary: Builds synthetic angle gathers from log-Vp, log-Vs and log-density using Aki-Richards or Fatti linearisations, then inverts them back. It covers noise, joint PP-PS inversion, regularisation and blocky L1 inversion.
+  concepts: [prestack-inversion, avo, aki-richards, fatti, regularization]
+
+- id: pylops-poststack
+  title: "PyLops tutorial: Post-stack inversion"
+  url: https://pylops.readthedocs.io/en/latest/tutorials/poststack.html
+  kind: tutorial
+  topic: fluid
+  free: true
+  license: "LGPL-3.0 (PyLops)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Inverts stacked seismic for acoustic impedance with a convolutional model. This is the simplest inversion to try first.
+  concepts: [poststack-inversion, acoustic-impedance, convolution-model]
+
+- id: seg-2016-ml-contest
+  title: "SEG 2016 Machine Learning Contest - facies classification (B. Hall, TLE Oct 2016)"
+  url: https://github.com/seg/2016-ml-contest
+  kind: notebook
+  topic: fluid
+  free: true
+  license: "Data NOT openly licensed (contest use only); code by each author; article CC-BY"
+  size: "~1 MB csv"
+  level: beginner
+  verified: true
+  summary: Starter SVM notebook plus all team solutions for predicting 9 core-based facies from GR, resistivity, PE and neutron-density logs in Kansas gas wells. It is the classic first ML-on-logs exercise.
+  concepts: [ml, facies-classification, svm, well-logs, f1-score]
+
+- id: andymcd-petrophysics-python
+  title: "Petrophysics-Python-Series (A. McDonald)"
+  url: https://github.com/andymcdgeo/Petrophysics-Python-Series
+  kind: notebook
+  topic: fluid
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: false
+  summary: Beginner notebooks for loading LAS and DLIS files, plotting logs and formation tops, clustering logs and handling outliers, with companion YouTube videos.
+  concepts: [well-logs, lasio, plotting, clustering, ml]
+
+- id: swung-transform-2021-python
+  title: "TRANSFORM 2021 (Software Underground) - Practical seismic with Python tutorials"
+  url: https://transform.softwareunderground.org/2021-practical-python
+  kind: video
+  topic: shared
+  free: true
+  license: "unknown (recorded livestreams on YouTube)"
+  size: null
+  level: beginner
+  verified: false
+  summary: Recorded hands-on sessions reading the Volve 3D volume with segyio and doing 4D seismic in Python.
+  concepts: [segyio, volve, python, video]
+
+- id: crewes-zoeppritz-explorer
+  title: "CREWES Zoeppritz Explorer (and Reflectivity/Fluid Properties explorers)"
+  url: https://www.crewes.org/ResearchLinks/ExplorerPrograms/ZE/
+  kind: code
+  topic: fluid
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: false
+  summary: Interactive applets for exact Zoeppritz reflection and transmission coefficients against angle, plus a Batzle-Wang fluid calculator. They are Java applets that don't run on Java 8+, so use them as a reference only.
+  concepts: [zoeppritz, reflection-coefficient, batzle-wang]
+
+# ---------------------------------------------------------------- code libraries
+- id: bruges
+  title: "bruges - Agile Scientific geophysics equations library"
+  url: https://github.com/agile-geoscience/bruges
+  kind: code
+  topic: fluid
+  free: true
+  license: "Apache-2.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Pip-installable functions covering Zoeppritz, Aki-Richards and Shuey reflectivity, rock physics (Gassmann, moduli conversions), wavelets and filters. Docs are at code.agilescientific.com/bruges.
+  concepts: [zoeppritz, shuey, gassmann, wavelets, avo]
+
+- id: bruges-docs
+  title: "bruges documentation"
+  url: https://code.agilescientific.com/bruges/
+  kind: code
+  topic: fluid
+  free: true
+  license: "Apache-2.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: API reference for bruges modules (reflection, rockphysics, filters, models).
+  concepts: [api-docs, avo, rock-physics]
+
+- id: rockphypy
+  title: "rockphypy - rock physics Python library"
+  url: https://rockphypy.readthedocs.io/en/latest/
+  kind: code
+  topic: fluid
+  free: true
+  license: "unknown (open source; check repo)"
+  size: null
+  level: advanced
+  verified: true
+  summary: Covers Gassmann, Brown-Korringa and Brie fluid mixing, Biot, squirt-flow and patchy-saturation dispersion and attenuation, Batzle-Wang fluids, bounds, granular contact models, and exact and approximate AVO.
+  concepts: [gassmann, biot, patchy-saturation, batzle-wang, bounds, avo]
+
+- id: segyio
+  title: "segyio (Equinor) - SEG-Y reader/writer"
+  url: https://github.com/equinor/segyio
+  kind: code
+  topic: shared
+  free: true
+  license: "LGPL-3.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: Fast C library with Python bindings for reading SEG-Y and Seismic Unix files into numpy. You need it for Volve, F3 and Poseidon SEG-Y.
+  concepts: [seg-y, io, numpy]
+
+- id: welly
+  title: "welly (Agile) - well data in Python"
+  url: https://github.com/agile-geoscience/welly
+  kind: code
+  topic: fluid
+  free: true
+  license: "Apache-2.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: Higher-level well object on top of lasio, with curves, tops, quality checks and synthetic seismograms.
+  concepts: [las, well-logs, synthetic-seismogram]
+
+- id: lasio
+  title: "lasio - LAS file reader"
+  url: https://lasio.readthedocs.io/en/latest/
+  kind: code
+  topic: fluid
+  free: true
+  license: "MIT"
+  size: null
+  level: beginner
+  verified: true
+  summary: Reads and writes LAS 1.2, 2.0 and 3.0 well-log files into pandas.
+  concepts: [las, well-logs, io]
+
+- id: seismic-unix
+  title: "Seismic Unix (CWP / J. Stockwell)"
+  url: https://seismic-unix.org/
+  kind: code
+  topic: shared
+  free: true
+  license: "Free under CWP licence (not public domain)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Classic command-line seismic processing package. Each program prints its own documentation when run with no arguments, and the user manual is the main learning resource.
+  concepts: [seismic-processing, su, seg-y]
+
+# ---------------------------------------------------------------- papers / reports
+- id: dvorkin-2005-attenuation
+  title: "Mavko, Dvorkin & Walls (2005) A Rock Physics and Attenuation Analysis of a Well from the Gulf of Mexico (SEG abstract, NETL)"
+  url: https://netl.doe.gov/sites/default/files/2018-04/2005_SEG_Dvorkin.pdf
+  kind: paper
+  topic: fluid
+  free: true
+  license: "unknown (US DOE-hosted)"
+  size: "184 KB"
+  level: advanced
+  verified: true
+  summary: Shows from well modelling that P-wave attenuation (1/Qp) is large only in the gas sand, while S-wave attenuation stays small everywhere. The ratio Qp^-1/Qs^-1 is about 1 in wet rock and large in gas, so it can act as a hydrocarbon indicator.
+  concepts: [attenuation, qp-qs-ratio, gas-sand, soft-sand-model]
+
+- id: netl-nt42243-report
+  title: "DOE/NETL Final Report NT42243 - P- and S-wave attenuation for reservoir characterization (Rock Solid Images)"
+  url: https://www.netl.doe.gov/sites/default/files/2018-04/NT42243_FinalRpt.pdf
+  kind: paper
+  topic: fluid
+  free: true
+  license: "US Government report (public)"
+  size: null
+  level: advanced
+  verified: true
+  summary: Full project report behind the Dvorkin and Mavko attenuation work. It concludes that seismic attenuation can be linked to gas reservoirs and used as a reconnaissance tool.
+  concepts: [attenuation, q-factor, gas, field-study]
+
+- id: smith-2003-gassmann-tutorial
+  title: "Smith, Sondergeld & Rai (2003) Gassmann fluid substitutions: A tutorial. Geophysics 68(2), 430-440"
+  url: https://doi.org/10.1190/1.1567211
+  kind: paper
+  topic: fluid
+  free: false
+  license: "SEG copyright (paywalled)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: The standard step-by-step recipe for Gassmann substitution, covering when it works and when it fails. The DOI resolves to SEG, and the paper usually needs a library login.
+  concepts: [gassmann, fluid-substitution, recipe]
+
+- id: batzle-wang-1992
+  title: "Batzle & Wang (1992) Seismic properties of pore fluids. Geophysics 57(11), 1396-1408"
+  url: https://doi.org/10.1190/1.1443207
+  kind: paper
+  topic: fluid
+  free: false
+  license: "SEG copyright (paywalled)"
+  size: null
+  level: advanced
+  verified: true
+  summary: The empirical equations for density, bulk modulus and velocity of brine, oil and gas against pressure, temperature, salinity, API gravity and GOR. Every Fluid model needs these, and free code implementations exist in rockphypy.
+  concepts: [batzle-wang, fluid-properties, brine, oil, gas]
+
+- id: rutherford-williams-1989
+  title: "Rutherford & Williams (1989) Amplitude-versus-offset variations in gas sands. Geophysics 54, 680-688"
+  url: https://csegrecorder.com/articles/view/key-avo-references
+  kind: paper
+  topic: fluid
+  free: false
+  license: "paper paywalled; CSEG Recorder reference list free"
+  size: null
+  level: intermediate
+  verified: false
+  summary: Origin of AVO classes 1, 2 and 3. The linked CSEG Recorder article reviews key AVO references, including Castagna's Class 4 extension.
+  concepts: [avo-classes, gas-sand, class-4]
+
+- id: hall-2016-facies-ml
+  title: "Hall (2016) Facies classification using machine learning. The Leading Edge 35(10) (SEG Wiki copy)"
+  url: https://wiki.seg.org/wiki/Facies_classification_using_machine_learning
+  kind: paper
+  topic: fluid
+  free: true
+  license: "CC BY-SA"
+  size: null
+  level: beginner
+  verified: false
+  summary: The tutorial article that launched the SEG 2016 ML contest. It walks through feature selection, an SVM, a confusion matrix and F1 scores on Kansas well logs.
+  concepts: [ml, svm, facies, well-logs]
+
+- id: bohling-dubois-2003
+  title: "Bohling & Dubois (2003) KGS Open-File Report 2003-50 (Hugoton/Panoma facies neural networks)"
+  url: https://www.kgs.ku.edu/PRS/publication/2003/ofr2003-50.pdf
+  kind: paper
+  topic: fluid
+  free: true
+  license: "unknown (KGS public report)"
+  size: "281 KB"
+  level: intermediate
+  verified: true
+  summary: The original report describing the Council Grove/Hugoton well-log facies data used in the SEG 2016 contest.
+  concepts: [facies, neural-networks, well-logs, kansas]
+
+- id: alaudah-2019-f3-benchmark
+  title: "Alaudah et al. (2019) A Machine Learning Benchmark for Facies Classification (arXiv:1901.07659)"
+  url: https://arxiv.org/abs/1901.07659
+  kind: paper
+  topic: shared
+  free: true
+  license: "CC BY 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Releases a fully annotated 3D geological model of the F3 block (built from seismic and 26 wells) with fixed train and test splits and baseline deconvnet models.
+  concepts: [ml, seismic-facies, benchmark, f3]
+
+- id: arxiv-1904-02254-physics-dl-4d
+  title: "Including Physics in Deep Learning - 4D seismic pressure/saturation inversion (arXiv:1904.02254)"
+  url: https://arxiv.org/abs/1904.02254
+  kind: paper
+  topic: fluid
+  free: true
+  license: "arXiv (see paper)"
+  size: null
+  level: advanced
+  verified: true
+  summary: Deep-learning inversion of 4D seismic for pressure and saturation change. It computes AVO gradients explicitly because rare gas-saturation changes would otherwise be treated as outliers.
+  concepts: [ml, 4d-seismic, saturation, physics-informed, avo]
+
+- id: arxiv-2307-07969-satinv
+  title: "Data-driven pre-stack rock-physics inversion for water-saturation change (arXiv:2307.07969)"
+  url: https://arxiv.org/abs/2307.07969
+  kind: paper
+  topic: fluid
+  free: true
+  license: "arXiv (see paper)"
+  size: null
+  level: advanced
+  verified: true
+  summary: Uses learned rock-physics inversion of pre-stack time-lapse seismic to estimate petrophysical properties and water-saturation changes.
+  concepts: [ml, rock-physics-inversion, saturation, time-lapse]
+
+- id: arxiv-2410-21960-poseidon-ml
+  title: "Farfour et al. ML and Seismic Attributes for Prospect Generation - Poseidon, offshore Australia (arXiv:2410.21960)"
+  url: https://arxiv.org/abs/2410.21960
+  kind: paper
+  topic: fluid
+  free: true
+  license: "arXiv (see paper)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Neural networks turn seismic and elastic attributes (Lambda-Rho, impedances, Vp/Vs, AVO fluid factor) into resistivity, gamma-ray, sand and gas-chimney volumes on the open Poseidon data.
+  concepts: [ml, seismic-attributes, gas, poseidon, vp-vs]
+
+- id: frontiers-2026-obn-fluid-ml
+  title: "OBN seismic + ML fluid discrimination in pre-salt carbonates (Frontiers in Earth Science, 2026)"
+  url: https://www.frontiersin.org/articles/10.3389/feart.2026.1767668
+  kind: paper
+  topic: fluid
+  free: true
+  license: "CC BY (Frontiers open access)"
+  size: null
+  level: advanced
+  verified: true
+  summary: Open-access study combining pre-stack inversion, AVO crossplots and an LSTM rock-physics model to separate fluids in carbonates.
+  concepts: [ml, lstm, prestack-inversion, avo, fluid-discrimination]
+
+# ---------------------------------------------------------------- datasets
+- id: volve
+  title: "Equinor Volve field data village"
+  url: https://www.equinor.com/energy/volve-data-sharing
+  kind: dataset
+  topic: fluid
+  free: true
+  license: "Equinor Open Data Licence (replaced CC BY-NC-SA 4.0 in Sep 2020; no resale)"
+  size: "~40,000 files; ~5 TB total (2018 estimate)"
+  level: intermediate
+  verified: true
+  summary: The complete subsurface and production dataset for a North Sea oil field produced 2008-2016, with 3D/4D seismic (including pre-stack), full well-log suites (sonic, shear sonic, density, neutron, resistivity), petrophysical interpretations, reservoir models and production. It is the best real dataset with known oil, water and gas answers. Access is now through the Databricks Marketplace and the Equinor user guide.
+  concepts: [seismic, prestack, well-logs, oil, production, ground-truth]
+
+- id: volve-ml-repo
+  title: "volve-machine-learning (Y. Nuwara) - Volve log subset + notebooks"
+  url: https://github.com/yohanesnuwara/volve-machine-learning
+  kind: notebook
+  topic: fluid
+  free: true
+  license: "MIT (code); Volve data under Equinor licence"
+  size: null
+  level: beginner
+  verified: true
+  summary: Small, ready-to-use Volve well-log CSVs with notebooks predicting a missing P-sonic log (gradient boosting, R2 about 0.95). It is a quick way into Volve without the 5 TB download.
+  concepts: [volve, sonic-prediction, gradient-boosting, well-logs]
+
+- id: force-2020-zenodo
+  title: "FORCE 2020 well-log and lithofacies dataset (Zenodo 10.5281/zenodo.4351156)"
+  url: https://zenodo.org/records/4351156
+  kind: dataset
+  topic: fluid
+  free: true
+  license: "CC BY 4.0"
+  size: "170 MB (LAS zip 169.8 MB + NPD lithostratigraphy xlsx)"
+  level: beginner
+  verified: true
+  summary: Logs from 118 Norwegian offshore wells (GR, resistivity, density, neutron, sonic, PEF and others) with expert lithology labels and train, test and blind splits. It is the best open labelled well-log ML set.
+  concepts: [well-logs, lithology, ml, labels, norway]
+
+- id: force-2020-github
+  title: "FORCE 2020 Machine Learning competition repository"
+  url: https://github.com/bolgebrygg/Force-2020-Machine-Learning-competition
+  kind: dataset
+  topic: fluid
+  free: true
+  license: "data CC BY 4.0 via Zenodo; repo licence not stated"
+  size: null
+  level: beginner
+  verified: true
+  summary: Competition data, starter notebook, the scoring penalty matrix and winning solutions for the lithology contest (329 teams signed up, 148 submitted).
+  concepts: [ml, lithology, scoring-matrix, starter-notebook]
+
+- id: f3-zenodo-interpretation
+  title: "Netherlands F3 Interpretation Dataset (Zenodo 1471548)"
+  url: https://zenodo.org/record/1471548
+  kind: dataset
+  topic: shared
+  free: true
+  license: "CC BY 4.0"
+  size: "1.7 GB"
+  level: intermediate
+  verified: true
+  summary: Post-stack F3 North Sea seismic as inline and crossline images and tiles, with nine reinterpreted horizons and labelled masks. The shallow F3 section is known for gas bright spots and flat spots.
+  concepts: [seismic, horizons, f3, bright-spot, ml]
+
+- id: f3-facies-benchmark
+  title: "F3 Facies Classification Benchmark data (Zenodo 3755060) + code"
+  url: https://github.com/olivesgatech/facies_classification_benchmark
+  kind: dataset
+  topic: shared
+  free: true
+  license: "MIT (Zenodo record and code)"
+  size: "2.1 GB (data.zip 1.1 GB, raw.zip 1.1 GB, logs.zip 112 KB)"
+  level: intermediate
+  verified: true
+  summary: Numpy train and test volumes with facies labels for F3, plus raw horizons, faults and well logs. Download with wget from zenodo.org/record/3755060.
+  concepts: [seismic-facies, ml, f3, well-logs, benchmark]
+
+- id: poseidon-tgs
+  title: "Poseidon 3D seismic (TGS / ConocoPhillips / Geoscience Australia) on AWS Open Data"
+  url: https://registry.opendata.aws/tgs-opendata-poseidon/
+  kind: dataset
+  topic: fluid
+  free: true
+  license: "CC BY 4.0 (MDIO); original SEG-Y CC BY 3.0 AU"
+  size: "~2,900 km2 survey; total volume size not stated on registry page"
+  level: advanced
+  verified: true
+  summary: Near, mid, far and full angle-stack 3D seismic plus velocities over a gas-condensate discovery off NW Australia, in MDIO format. The angle stacks make it usable for real AVO work. Access with 'aws s3 ls --no-sign-request s3://tgs-opendata-poseidon/' (us-west-2). Well logs come from NOPIMS.
+  concepts: [seismic, angle-stacks, avo, gas, mdio, aws]
+
+- id: nopims
+  title: "NOPIMS - Australian National Offshore Petroleum Information Management System"
+  url: https://ga.gov.au/nopims
+  kind: dataset
+  topic: fluid
+  free: true
+  license: "unknown (openly accessible; see GA copyright page)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Free portal for released Australian offshore well logs, completion reports and seismic, including the wells needed to tie the Poseidon cube. Large packages can be ordered.
+  concepts: [well-logs, seismic, australia, completion-reports]
+
+- id: nlog
+  title: "NLOG - Dutch oil and gas portal (TNO)"
+  url: https://www.nlog.nl/en/data
+  kind: dataset
+  topic: fluid
+  free: true
+  license: "unknown (see NLOG disclaimer)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: Dutch government portal. Well logs (LAS/LIS), reports and cores become public after 5 years, and most seismic after 5-10 years. It also gives monthly production per well, which shows which wells found gas.
+  concepts: [well-logs, seismic, netherlands, production]
+
+- id: nlog-epos-petrel
+  title: "EPOS-NL Petrel project of public Dutch wells, logs and 2D/3D seismic (via NLOG / Utrecht)"
+  url: https://www.nlog.nl/en/node/1227
+  kind: dataset
+  topic: fluid
+  free: true
+  license: "CC BY 4.0 (Utrecht University data publication)"
+  size: null
+  level: advanced
+  verified: false
+  summary: Bundled Petrel project of all publicly available Dutch on- and offshore wells, logs and seismic. It needs Petrel to open natively, but the underlying files can be exported.
+  concepts: [petrel, well-logs, seismic, netherlands]
+
+- id: kgs-las-archives
+  title: "Kansas Geological Survey - LAS well-log ZIP archives"
+  url: https://www.kgs.ku.edu/PRS/Scans/Log_Summary/index.html
+  kind: dataset
+  topic: fluid
+  free: true
+  license: "unknown (free download; no redistribution terms stated)"
+  size: "~28,900 LAS files in 18 yearly ZIPs, ~9 GB total"
+  level: beginner
+  verified: true
+  summary: Every public digital LAS log in Kansas from 1999 to 2026, with a well index text file to join logs to wells. Many wells have production records, which give weak labels for oil and gas.
+  concepts: [las, well-logs, kansas, bulk-download]
+
+- id: kgs-las-search
+  title: "KGS Digital Wireline Logs search"
+  url: https://www.kgs.ku.edu/Magellan/Logs/index.html
+  kind: dataset
+  topic: fluid
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: true
+  summary: Query interface for individual Kansas LAS files by location or well, which is handier than the bulk archives for small experiments.
+  concepts: [las, well-logs, search]
+
+- id: parihaka-hf
+  title: "Parihaka 3D (Taranaki, NZ) seismic + facies labels (Hugging Face mirror)"
+  url: https://huggingface.co/datasets/SRaha23/parihaka-taranaki
+  kind: dataset
+  topic: shared
+  free: true
+  license: "CC BY 4.0"
+  size: "582 MB (782 x 590 x 1006 samples, 4 ms)"
+  level: intermediate
+  verified: true
+  summary: Numpy seismic cube and 6-class facies labels from the SEG/SEAM 2020 facies challenge. It is useful for seismic ML practice but has no fluid labels.
+  concepts: [seismic, facies, ml, new-zealand]
+
+- id: parihaka-f3-mendeley
+  title: "Parihaka + Netherlands F3 raw volumes and labels (Mendeley Data gnvyh3msrj)"
+  url: https://data.mendeley.com/datasets/gnvyh3msrj/1
+  kind: dataset
+  topic: shared
+  free: true
+  license: "CC BY 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: The upstream redistribution of both labelled facies volumes in one place.
+  concepts: [seismic, facies, f3, parihaka]
+
+- id: agl-elastic-marmousi
+  title: "AGL Elastic Marmousi (Marmousi2) model - SEG Wiki open data"
+  url: https://wiki.seg.org/wiki/AGL_Elastic_Marmousi
+  kind: dataset
+  topic: fluid
+  free: true
+  license: "Custom licence that must travel with the data (see page)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: Elastic version of the Marmousi model with Vp, Vs and density grids and processed data. Marmousi2 includes gas- and oil-charged sands, so it is a ready-made synthetic for testing fluid detection with Devito.
+  concepts: [synthetic-model, elastic, vp, vs, density, fd-modeling]
+
+- id: seam-phase1-netl
+  title: "SEAM Phase I subsurface data model, Gulf of Mexico (NETL EDX)"
+  url: https://edx.netl.doe.gov/dataset/5eb2dceb-51df-447a-8193-8da6505cb852
+  kind: dataset
+  topic: shared
+  free: true
+  license: "unknown (see NETL EDX record)"
+  size: null
+  level: advanced
+  verified: true
+  summary: Five SEAM Phase I earth models of a Gulf of Mexico salt-canopy area. The elastic model is on a 20 x 20 x 10 m grid. The page redirected and the file list was not inspected.
+  concepts: [synthetic-model, elastic, salt, seam]
+
+- id: seg-wiki-open-data
+  title: "SEG Wiki Open data catalogue"
+  url: https://wiki.seg.org/wiki/Open_data
+  kind: dataset
+  topic: shared
+  free: true
+  license: "varies per dataset"
+  size: null
+  level: intermediate
+  verified: false
+  summary: SEG's index of free public seismic datasets (Kerry-3D, Opunake-3D, Tui-3D, SEAM subsets, Marmousi, etc.), with licence notes and S3 download commands. The page was blocked to automated fetch.
+  concepts: [catalog, open-data, seismic]
+
+- id: agile-volve-licence-blog
+  title: "Agile Scientific - 'Big open data... or is it?' (Volve licence critique)"
+  url: https://agilescientific.com/blog/2018/6/17/big-open-data-or-is-it
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: false
+  summary: Explains what is actually in Volve (about 5 TB, 40,000 files) and the limits of its licence. Read it before building on Volve.
+  concepts: [volve, licensing, open-data]

@@ -17,3 +17,12 @@ loop:
 
 # Name for this computer in the dashboard. Leave empty to use the hostname.
 machine_name: ""
+
+# The course (python -m engine.course.runner)
+course:
+  max_attempts: 8           # tries per lesson before it's marked "stuck" and the course moves on
+
+# Real data downloads (python -m engine.data.downloader)
+download:
+  ask_above_gb: 5           # anything bigger needs your OK:  --approve <id>
+  folder: data/real

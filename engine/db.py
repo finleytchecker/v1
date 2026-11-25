@@ -49,6 +49,48 @@ CREATE TABLE IF NOT EXISTS mistakes (
     signal_path TEXT,
     created_at  REAL NOT NULL
 );
+CREATE TABLE IF NOT EXISTS course_attempts (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    run_id        INTEGER REFERENCES runs(id),
+    lesson_id     TEXT NOT NULL,
+    track         TEXT,
+    attempt       INTEGER NOT NULL,
+    outcome       TEXT NOT NULL,          -- pass | fail
+    score         REAL,
+    train_score   REAL,
+    threshold     REAL,
+    exam_score    REAL,                   -- final hold-out, only scored after a pass
+    tried         TEXT,                   -- plain-English: what it tried
+    why           TEXT,                   -- plain-English: why it failed
+    where_failed  TEXT,                   -- plain-English: under which conditions
+    fix_next      TEXT,                   -- plain-English: what it changes next
+    strategy      TEXT,                   -- JSON
+    details       TEXT,                   -- JSON (confusions, per-class errors, ...)
+    mistakes      TEXT,                   -- JSON list of saved example files
+    started_at    REAL NOT NULL,
+    finished_at   REAL NOT NULL
+);
+CREATE TABLE IF NOT EXISTS course_status (
+    lesson_id   TEXT PRIMARY KEY,
+    track       TEXT,
+    title       TEXT,
+    position    INTEGER,
+    status      TEXT NOT NULL,            -- not_started | in_progress | passed | stuck
+    attempts    INTEGER DEFAULT 0,
+    best_score  REAL,
+    exam_score  REAL,
+    updated_at  REAL
+);
+CREATE TABLE IF NOT EXISTS downloads (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    entry_id    TEXT NOT NULL,
+    dataset     TEXT,
+    bytes       INTEGER,
+    status      TEXT,
+    seconds     REAL,
+    path        TEXT,
+    created_at  REAL NOT NULL
+);
 CREATE TABLE IF NOT EXISTS credits (
     id         INTEGER PRIMARY KEY AUTOINCREMENT,
     amount     REAL NOT NULL,
@@ -66,6 +108,9 @@ class Logbook:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self._conn() as c:
             c.executescript(SCHEMA)
+            cols = {r[1] for r in c.execute("PRAGMA table_info(runs)")}
+            if "data_source" not in cols:   # 'real' | 'synthetic' | 'course'
+                c.execute("ALTER TABLE runs ADD COLUMN data_source TEXT DEFAULT 'synthetic'")
 
     @contextmanager
     def _conn(self):
@@ -78,11 +123,11 @@ class Logbook:
             conn.close()
 
     # --- runs -------------------------------------------------------------
-    def start_run(self, module: str, machine: str, notes: str = "") -> int:
+    def start_run(self, module: str, machine: str, notes: str = "", data_source: str = "synthetic") -> int:
         with self._conn() as c:
             cur = c.execute(
-                "INSERT INTO runs (module, machine, status, started_at, notes) VALUES (?,?,?,?,?)",
-                (module, machine, "running", time.time(), notes),
+                "INSERT INTO runs (module, machine, status, started_at, notes, data_source) VALUES (?,?,?,?,?,?)",
+                (module, machine, "running", time.time(), notes, data_source),
             )
             return cur.lastrowid
 
@@ -95,12 +140,16 @@ class Logbook:
                 (status, time.time(), holdout_accuracy, run_id),
             )
 
-    def runs(self, module: str | None = None) -> list[dict]:
-        q, args = "SELECT * FROM runs", ()
+    def runs(self, module: str | None = None, data_source: str | None = None) -> list[dict]:
+        q, conds, args = "SELECT * FROM runs", [], []
         if module:
-            q, args = q + " WHERE module=?", (module,)
+            conds.append("module=?"); args.append(module)
+        if data_source:
+            conds.append("data_source=?"); args.append(data_source)
+        if conds:
+            q += " WHERE " + " AND ".join(conds)
         with self._conn() as c:
-            return [dict(r) for r in c.execute(q + " ORDER BY id DESC", args)]
+            return [dict(r) for r in c.execute(q + " ORDER BY id DESC", tuple(args))]
 
     def running(self) -> list[dict]:
         with self._conn() as c:
@@ -144,6 +193,61 @@ class Logbook:
             return [dict(r) for r in c.execute(
                 "SELECT m.* FROM mistakes m JOIN runs r ON r.id=m.run_id WHERE r.module=?"
                 " ORDER BY m.id DESC LIMIT ?", (module, limit))]
+
+    # --- course -----------------------------------------------------------
+    def sync_syllabus(self, lessons: list[dict]):
+        """Register every lesson (new ones start as not_started; existing progress is kept)."""
+        with self._conn() as c:
+            for i, l in enumerate(lessons):
+                c.execute("INSERT INTO course_status (lesson_id, track, title, position, status, updated_at)"
+                          " VALUES (?,?,?,?, 'not_started', ?) ON CONFLICT(lesson_id) DO UPDATE SET"
+                          " track=excluded.track, title=excluded.title, position=excluded.position",
+                          (l["id"], l["track"], l["title"], i, time.time()))
+
+    def set_lesson(self, lesson_id: str, **fields):
+        fields["updated_at"] = time.time()
+        cols = ", ".join(f"{k}=?" for k in fields)
+        with self._conn() as c:
+            c.execute(f"UPDATE course_status SET {cols} WHERE lesson_id=?", (*fields.values(), lesson_id))
+
+    def reset_course(self):
+        with self._conn() as c:
+            c.execute("DELETE FROM course_attempts")
+            c.execute("UPDATE course_status SET status='not_started', attempts=0, best_score=NULL, exam_score=NULL")
+
+    def log_attempt(self, **row) -> int:
+        for k in ("strategy", "details", "mistakes"):
+            row[k] = json.dumps(row.get(k), default=float)
+        cols = ", ".join(row)
+        with self._conn() as c:
+            cur = c.execute(f"INSERT INTO course_attempts ({cols}) VALUES ({','.join('?' * len(row))})",
+                            tuple(row.values()))
+            return cur.lastrowid
+
+    def attempts(self, lesson_id: str | None = None, limit: int = 500) -> list[dict]:
+        q, args = "SELECT * FROM course_attempts", ()
+        if lesson_id:
+            q, args = q + " WHERE lesson_id=?", (lesson_id,)
+        with self._conn() as c:
+            rows = [dict(r) for r in c.execute(q + " ORDER BY id DESC LIMIT ?", (*args, limit))]
+        for r in rows:
+            for k in ("strategy", "details", "mistakes"):
+                r[k] = json.loads(r[k]) if r[k] else None
+        return rows
+
+    def course_status(self) -> list[dict]:
+        with self._conn() as c:
+            return [dict(r) for r in c.execute("SELECT * FROM course_status ORDER BY position")]
+
+    # --- downloads --------------------------------------------------------
+    def log_download(self, entry_id, dataset, nbytes, status, seconds, path):
+        with self._conn() as c:
+            c.execute("INSERT INTO downloads (entry_id, dataset, bytes, status, seconds, path, created_at)"
+                      " VALUES (?,?,?,?,?,?,?)", (entry_id, dataset, nbytes, status, seconds, path, time.time()))
+
+    def downloads(self) -> list[dict]:
+        with self._conn() as c:
+            return [dict(r) for r in c.execute("SELECT * FROM downloads ORDER BY id DESC")]
 
     # --- credits ----------------------------------------------------------
     def add_credits(self, amount: float, note: str = ""):

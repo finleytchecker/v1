@@ -1,0 +1,92 @@
+# The V1 course: synthetic WARM-UP lessons the machine studies before real data.
+# Each lesson points at the notes it's based on (course/notes/...) and has one graded exercise.
+# The exercise is auto-generated from physics, so there's no limit on practice material.
+#
+# task: classify (pick the right label) or regress (give a number)
+# threshold: the score needed to pass. For regress, an answer counts as right if it's within
+#            tol_rel (fraction) or tol_abs (units), whichever is bigger.
+
+tracks:
+  - id: shared
+    title: "Foundations: waves and signals"
+    lessons:
+      - id: s01-tone-frequency
+        title: "Find the pitch of a tone"
+        teaches: "Every vibration has a frequency. The spectrum (FFT) shows it as a peak."
+        notes: [shared]
+        exercise: {generator: tone_frequency, task: regress, threshold: 0.90, tol_rel: 0.03, tol_abs: 1.5}
+      - id: s02-signal-in-noise
+        title: "Is there a signal hiding in the noise?"
+        teaches: "Noise spreads energy over all frequencies; a signal piles it into one. Signal-to-noise ratio (SNR) sets how hard it is."
+        notes: [shared]
+        exercise: {generator: signal_present, task: classify, threshold: 0.90}
+      - id: s03-signal-shapes
+        title: "Tone, chirp, noise or bang?"
+        teaches: "Different sources leave different fingerprints in time and frequency."
+        notes: [shared]
+        exercise: {generator: signal_shapes, task: classify, threshold: 0.92}
+      - id: s04-filter-the-rumble
+        title: "Hear a tone under loud rumble"
+        teaches: "Filtering: throw away the frequencies you don't care about before you look."
+        notes: [shared]
+        exercise: {generator: tone_under_rumble, task: regress, threshold: 0.90, tol_rel: 0.03, tol_abs: 1.5}
+
+  - id: leak
+    title: "Leak: reading fiber-optic (DAS) vibration"
+    lessons:
+      - id: l01-three-events
+        title: "Quiet, traffic or leak?"
+        teaches: "A DAS waterfall plots position along the cable against time. Traffic makes moving diagonal streaks; a leak is a steady hiss in one spot."
+        notes: [leak]
+        exercise: {generator: das_three_events, task: classify, threshold: 0.93}
+      - id: l02-five-events
+        title: "Add digging and wind"
+        teaches: "Digging is bursty and local; wind shakes the whole cable at low frequency."
+        notes: [leak]
+        exercise: {generator: das_five_events, task: classify, threshold: 0.90}
+      - id: l03-leak-in-clutter
+        title: "Find a weak leak among traffic, wind and digging"
+        teaches: "Real cables are noisy. A leak is narrow-band and never stops, which is what gives it away."
+        notes: [leak]
+        exercise: {generator: das_leak_in_clutter, task: classify, threshold: 0.85}
+      - id: l04-traffic-speed
+        title: "How fast is the car?"
+        teaches: "A streak's slope on the waterfall is the vehicle's speed."
+        notes: [leak]
+        exercise: {generator: das_traffic_speed, task: regress, threshold: 0.85, tol_rel: 0.15, tol_abs: 1.0}
+      - id: l05-leak-location
+        title: "Where along the cable is the leak?"
+        teaches: "The channel with the strongest steady narrow-band energy is the leak position."
+        notes: [leak]
+        exercise: {generator: das_leak_location, task: regress, threshold: 0.90, tol_abs: 1.0}
+
+  - id: fluid
+    title: "Fluid: what's in the rock?"
+    lessons:
+      - id: f01-gassmann
+        title: "Predict rock P-velocity from its pore fluid"
+        teaches: "Gassmann's equation: a stiffer pore fluid makes the rock stiffer, so P-waves go faster. Shear stiffness doesn't change."
+        notes: [fluid]
+        exercise: {generator: gassmann_vp, task: regress, threshold: 0.90, tol_rel: 0.02}
+      - id: f02-fluid-from-logs
+        title: "Brine, oil, gas or dry? (from well-log velocities)"
+        teaches: "Vp/Vs and impedance separate fluids better than raw velocities. Gas and dry pores look alike; that's real."
+        notes: [fluid]
+        # Measured ceiling ~68% (best model, 6000 examples): gas vs dry and oil vs brine overlap at 2% log noise.
+        exercise: {generator: fluid_from_logs, task: classify, threshold: 0.62}
+      - id: f03-attenuation
+        title: "Does this rock soak up high frequencies?"
+        teaches: "Fluid-filled rock has low Q: high frequencies die out, so the pulse gets duller."
+        notes: [fluid]
+        exercise: {generator: attenuation_q, task: classify, threshold: 0.90}
+      - id: f04-avo
+        title: "Gas or brine sand from AVO?"
+        teaches: "How reflection strength changes with angle (AVO) shows gas. Fit intercept and gradient."
+        notes: [fluid]
+        # Measured ceiling ~66%: the random shale above the sand hides the gas effect much of the time.
+        exercise: {generator: avo_gas_vs_brine, task: classify, threshold: 0.62}
+      - id: f05-s-wave-shadow
+        title: "Spot a liquid or gas pocket from surface sensors"
+        teaches: "S-waves can't cross liquid, so sensors above a pocket see an S-wave shadow. Gas slows P-waves a lot."
+        notes: [fluid]
+        exercise: {generator: s_wave_shadow, task: classify, threshold: 0.90}

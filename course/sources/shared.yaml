@@ -1,0 +1,828 @@
+# Shared foundations for V1 (Leak + Fluid): waves, intro seismology, DSP, ML for geophysical signals.
+# verified: true  = page was fetched during research (2026-11-25)
+# verified: false = URL seen only in search results or in a list on another page (or fetch was blocked)
+
+# ---------------------------------------------------------------- waves & seismology
+- id: iris-seismic-wave-motions
+  title: "Seismic Wave Motions: 4 waves animated (EarthScope/IRIS)"
+  url: "https://www.iris.edu/hq/inclass/animation/seismic_wave_motions4_waves_animated"
+  kind: video
+  topic: shared
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Short animation showing how P, S, Rayleigh and Love waves move the ground. Gives rough rock speeds of about 6 km/s for P and 4 km/s for S, and notes S waves cannot cross liquids."
+  concepts: [p-wave, s-wave, surface-waves, particle-motion]
+
+- id: iris-ssbw-course
+  title: "Seismology Skill Building Workshop for Undergraduates (IRIS inClass course page)"
+  url: "https://www.iris.edu/hq/inclass/course/798"
+  kind: course
+  topic: shared
+  free: true
+  license: "CC-BY 4.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Free ~70-hour online course from EarthScope (formerly IRIS) covering command line, SAC, data web services, Python/NumPy/ObsPy, spectrograms, filtering, instrument response and seismic noise. Some tutorials are linked publicly on SERC."
+  concepts: [obspy, spectrogram, filtering, instrument-response, seismic-noise, python]
+
+- id: earthscope-ssbw
+  title: "EarthScope Seismology Skill Building Workshop (course landing page)"
+  url: "https://www.earthscope.org/?p=8741"
+  kind: course
+  topic: shared
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: false
+  summary: "Landing page for the annual free 12-week online SSBW run by EarthScope; registration opens once a year (2026 session ran June to August)."
+  concepts: [obspy, python, seismology-basics]
+
+- id: mit-12-510
+  title: "MIT OCW 12.510 Introduction to Seismology (Spring 2010)"
+  url: "https://ocw.mit.edu/courses/12-510-introduction-to-seismology-spring-2010/"
+  kind: course
+  topic: shared
+  free: true
+  license: "CC-BY-NC-SA 4.0"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Graduate seismology course with lecture notes, problem sets and programming assignments on elastic waves, ray theory, travel times, surface-wave dispersion and tomography. Follows Stein and Wysession."
+  concepts: [wave-equation, ray-theory, snells-law, travel-times, surface-waves]
+
+- id: mit-12-510-syllabus
+  title: "MIT OCW 12.510 syllabus"
+  url: "https://ocw.mit.edu/courses/12-510-introduction-to-seismology-spring-2010/pages/syllabus/"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "CC-BY-NC-SA 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Topic list for 12.510 (elastic wave propagation, ray theory, travel-time interpretation, finite-frequency effects, dispersion, tomography); useful as a study checklist."
+  concepts: [syllabus, seismology-basics]
+
+- id: stein-earth324-slides
+  title: "Seth Stein, EARTH 324 lecture slides (follow Stein & Wysession)"
+  url: "https://sites.northwestern.edu/sethstein/earth-324-earthquakes-and-tectonics"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "unknown"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Sixteen free PowerPoint lectures by a co-author of the Stein & Wysession textbook, including travel times, seismic wave amplitudes, waveform modelling and source parameters."
+  concepts: [travel-times, amplitudes, geometric-spreading, seismology-basics]
+
+- id: shearer-intro-seismology-resources
+  title: "Shearer, Introduction to Seismology - book companion page"
+  url: "https://igppweb.ucsd.edu/~shearer/mahi/book.html"
+  kind: textbook
+  topic: shared
+  free: true
+  license: "unknown"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Companion page for Shearer's textbook (the book itself is not free). Free MATLAB/Python scripts, data for homework exercises, and errata."
+  concepts: [seismology-basics, exercises]
+
+- id: shearer-observational-notes
+  title: "Shearer, Aspects of Observational Seismology (course notes PDF)"
+  url: "https://igppweb.ucsd.edu/~shearer/ERI/notes.pdf"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "unknown"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Free notes from Shearer's 2009-2010 short courses on observational seismology topics; chapters stand alone."
+  concepts: [observational-seismology, travel-times]
+
+- id: nmsop2
+  title: "New Manual of Seismological Observatory Practice (NMSOP-2), IASPEI/GFZ"
+  url: "https://nmsop.gfz-potsdam.de"
+  kind: textbook
+  topic: shared
+  free: true
+  license: "free to read; credit required (see site)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Large free reference manual (chapters, exercises, information sheets) on seismic sensors, signals, noise and observatory processing. Site redirected and returned 503 when fetched."
+  concepts: [seismic-sensors, seismic-noise, sampling, instrument-response]
+
+- id: seg-wiki-attenuation
+  title: "SEG Wiki: Attenuation"
+  url: "https://wiki.seg.org/wiki/Attenuation"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "CC-BY-SA (SEG Wiki; not confirmed)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Explains the three causes of amplitude loss (transmission loss, geometric divergence, absorption), defines Q, and gives the absorption coefficient alpha = pi f / (Q V). Fetch returned 403; content seen in search snippet."
+  concepts: [attenuation, q-factor, geometric-spreading]
+
+- id: seg-wiki-reflection-refraction
+  title: "SEG Wiki: Reflection and refraction (book chapter)"
+  url: "https://wiki.seg.org/wiki/Reflection_and_refraction_%E2%80%93_book"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "CC-BY-SA (SEG Wiki; not confirmed)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Derives Snell's law (sin i / sin t = v1 / v2) and reflection/transmission at interfaces. Fetch returned 403; seen in search results."
+  concepts: [snells-law, reflection, refraction, critical-angle]
+
+- id: seg-wiki-wave-equation
+  title: "SEG Wiki: The wave equation"
+  url: "https://wiki.seg.org/wiki/The_wave_equation"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "CC-BY-SA (SEG Wiki; not confirmed)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "SEG Wiki page deriving the acoustic/elastic wave equation. Fetch returned 403; seen in search results."
+  concepts: [wave-equation]
+
+- id: seg-wiki-seismic-attenuation
+  title: "SEG Wiki: Seismic attenuation"
+  url: "https://wiki.seg.org/wiki/Seismic_attenuation"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "CC-BY-SA (SEG Wiki; not confirmed)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Separates geometric spreading, intrinsic (anelastic) absorption and scattering; states crust and mantle Q is roughly 10 to 1000. Seen in search results only."
+  concepts: [attenuation, q-factor, scattering]
+
+- id: coursera-computers-waves-simulations
+  title: "Computers, Waves, Simulations: A Practical Introduction to Numerical Methods using Python (LMU, Coursera)"
+  url: "https://www.coursera.org/learn/computers-waves-simulations"
+  kind: course
+  topic: shared
+  free: true
+  license: "unknown (Coursera; free enrolment, certificate may cost)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Heiner Igel's 9-module course (about 40 hours) solving the acoustic and elastic wave equation with finite differences, pseudospectral, finite-element and spectral-element methods in Jupyter."
+  concepts: [wave-equation, finite-difference, numerical-dispersion, simulation]
+
+- id: devito-project
+  title: "Devito - symbolic finite-difference wave propagation (site and seismic modelling tutorial)"
+  url: "https://www.devitoproject.org/"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "MIT"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Python package that generates fast stencil code for wave equations; its seismic tutorial notebooks build an acoustic modelling operator. Useful for making synthetic training data."
+  concepts: [wave-equation, finite-difference, synthetic-data]
+
+- id: devito-github
+  title: "devitocodes/devito GitHub repository (examples folder)"
+  url: "https://github.com/devitocodes/devito"
+  kind: code
+  topic: shared
+  free: true
+  license: "MIT"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Source and examples directory (including seismic modelling, FWI and RTM tutorials); notebooks can also be run on Binder."
+  concepts: [wave-equation, synthetic-data, fwi]
+
+- id: claerbout-books
+  title: "Jon Claerbout's free books (Stanford Exploration Project)"
+  url: "https://sep.stanford.edu/sep/prof/"
+  kind: textbook
+  topic: shared
+  free: true
+  license: "free to read (no explicit licence stated)"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Six free geophysical signal-processing books, including Fundamentals of Geophysical Data Processing (1976), Earth Soundings Analysis (1992) and Basic Earth Imaging (2010)."
+  concepts: [convolution, deconvolution, fourier-transform, imaging]
+
+# ---------------------------------------------------------------- DSP
+- id: think-dsp
+  title: "Think DSP: Digital Signal Processing in Python (Allen Downey)"
+  url: "https://greenteapress.com/wp/think-dsp/"
+  kind: textbook
+  topic: shared
+  free: true
+  license: "CC-BY-NC 3.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Free code-first DSP book with Jupyter notebooks: harmonics, spectra, noise, convolution, filtering, sampling. Best first DSP text for this project."
+  concepts: [fourier-transform, sampling, aliasing, convolution, filtering, spectrogram, noise]
+
+- id: dspguide
+  title: "The Scientist and Engineer's Guide to Digital Signal Processing (Steven W. Smith)"
+  url: "https://www.dspguide.com/"
+  kind: textbook
+  topic: shared
+  free: true
+  license: "free to read and download (all rights reserved)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Whole book free online; plain-language chapters on sampling, convolution, Fourier analysis, FIR/IIR filters and windowing."
+  concepts: [sampling, convolution, fourier-transform, filtering, windowing]
+
+- id: mit-6-003
+  title: "MIT OCW 6.003 Signals and Systems (Fall 2011)"
+  url: "https://ocw.mit.edu/courses/6-003-signals-and-systems-fall-2011/"
+  kind: course
+  topic: shared
+  free: true
+  license: "CC-BY-NC-SA 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Undergraduate signals course with lecture videos, notes, problem sets and exams: LTI systems, convolution, Fourier/Laplace/Z transforms and sampling."
+  concepts: [convolution, fourier-transform, sampling, lti-systems, frequency-response]
+
+- id: mit-6-341
+  title: "MIT OCW 6.341 Discrete-Time Signal Processing (Fall 2005)"
+  url: "https://ocw.mit.edu/courses/6-341-discrete-time-signal-processing-fall-2005/"
+  kind: course
+  topic: shared
+  free: true
+  license: "CC-BY-NC-SA 4.0"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Graduate DSP notes and problem sets by Oppenheim: FIR/IIR filter design, DFT/FFT, short-time Fourier analysis, filter banks, multirate processing."
+  concepts: [filter-design, fft, stft, multirate, resampling]
+
+- id: coursera-epfl-dsp1
+  title: "Digital Signal Processing 1: Basic Concepts and Algorithms (EPFL, Coursera)"
+  url: "https://www.coursera.org/learn/dsp1/"
+  kind: course
+  topic: shared
+  free: true
+  license: "unknown (Coursera; free enrolment option shown)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "First of four EPFL courses by Prandoni and Vetterli: discrete signals, vector-space view of signals, and Fourier analysis (about 29 hours)."
+  concepts: [fourier-transform, dft, sampling]
+
+- id: coursera-epfl-dsp-specialization
+  title: "Digital Signal Processing Specialization (EPFL, Coursera)"
+  url: "https://www.coursera.org/specializations/digital-signal-processing"
+  kind: course
+  topic: shared
+  free: true
+  license: "unknown (Coursera)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Four-course sequence: basics, filtering, analog vs digital (sampling), applications."
+  concepts: [filtering, sampling, fourier-transform]
+
+- id: epfl-dsp-exoset
+  title: "EPFL Digital Signal Processing I - downloadable course material"
+  url: "https://exoset.epfl.ch/booc/digital-signal-processing-i"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "unknown"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "EPFL page offering the complete DSP I course materials for download, outside Coursera."
+  concepts: [fourier-transform, filtering]
+
+- id: brunton-fourier-youtube
+  title: "Steve Brunton, Fourier Analysis video series (UW ME565), via Class Central"
+  url: "https://classcentral.com/course/youtube-fourier-analysis-80314"
+  kind: video
+  topic: shared
+  free: true
+  license: "unknown (YouTube)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "About 8 hours of free YouTube lectures from Fourier series to the FFT, FFT denoising and spectrograms, with Python and MATLAB code."
+  concepts: [fourier-transform, fft, spectrogram, denoising]
+
+- id: numpy-fft
+  title: "NumPy reference: Discrete Fourier Transform (numpy.fft)"
+  url: "https://numpy.org/doc/stable/reference/routines.fft.html"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "BSD-3-Clause"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Defines FFT output ordering, fftfreq/rfftfreq, the n/2+1 length of rfft output, normalization modes and Hermitian symmetry for real signals."
+  concepts: [fft, fftfreq, rfft, normalization]
+
+- id: scipy-shorttimefft
+  title: "SciPy reference: scipy.signal.ShortTimeFFT"
+  url: "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.ShortTimeFFT.html"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "BSD-3-Clause"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "SciPy's STFT class: window, hop and FFT length define time step (hop/fs) and frequency bin width (fs/mfft); includes inverse STFT."
+  concepts: [stft, spectrogram, windowing, hop-length]
+
+- id: obspy-tutorial
+  title: "ObsPy Tutorial"
+  url: "https://docs.obspy.org/tutorial/"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "LGPL-3.0 (ObsPy)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Official ObsPy tutorial: reading waveforms, filtering, spectrograms, trigger/picker (STA/LTA), FK beamforming and more."
+  concepts: [obspy, filtering, spectrogram, sta-lta, beamforming]
+
+- id: obspy-filtering
+  title: "ObsPy tutorial: Filtering Seismograms"
+  url: "https://docs.obspy.org/tutorial/code_snippets/filtering_seismograms.html"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "LGPL-3.0 (ObsPy)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Applies a 1 Hz, 2-corner zero-phase lowpass to a seismogram; zero-phase runs the filter forward and backward, doubling the effective corners to 4."
+  concepts: [filtering, zero-phase, butterworth]
+
+- id: obspy-fk
+  title: "ObsPy tutorial: Beamforming - FK Analysis"
+  url: "https://docs.obspy.org/tutorial/code_snippets/beamforming_fk_analysis.html"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "LGPL-3.0 (ObsPy)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Frequency-wavenumber array analysis on five stations: slowness grid of -3 to 3 s/km, 1 s sliding windows, 1-8 Hz band; outputs back-azimuth and slowness."
+  concepts: [fk-transform, beamforming, slowness, array-processing]
+
+- id: seismo-live
+  title: "Seismo-Live: Jupyter notebooks for seismology"
+  url: "https://seismo-live.github.io"
+  kind: notebook
+  topic: shared
+  free: true
+  license: "CC-BY-NC-SA 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Community library of runnable notebooks covering seismic data processing (including sampling theorem, Fourier transforms, windowing, filtering), computational seismology and earthquake physics."
+  concepts: [sampling, fourier-transform, windowing, filtering, wave-equation, obspy]
+
+- id: seismo-live-github
+  title: "Seismo-Live notebooks source (GitHub)"
+  url: "https://github.com/krischer/seismo_live"
+  kind: code
+  topic: shared
+  free: true
+  license: "unknown (site content CC-BY-NC-SA 4.0)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Source repository holding the notebooks folder and Docker setup for running Seismo-Live locally."
+  concepts: [notebooks, obspy]
+
+- id: bruges
+  title: "bruges - geophysics equations in Python (Agile)"
+  url: "https://github.com/agile-geoscience/bruges"
+  kind: code
+  topic: shared
+  free: true
+  license: "Apache-2.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Small Python library of geophysics formulas: reflectivity (Aki-Richards, Zoeppritz), wavelets (Ricker, Ormsby) and filters. Handy for building synthetic traces."
+  concepts: [reflection-coefficient, wavelets, synthetic-data]
+
+- id: madagascar
+  title: "Madagascar open-source seismic processing suite"
+  url: "https://ahay.org/wiki/Main_Page"
+  kind: code
+  topic: shared
+  free: true
+  license: "GPL (not confirmed)"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Multi-dimensional geophysical data processing package with reproducible tutorials; listed in awesome-open-geoscience."
+  concepts: [seismic-processing, fk-transform, reproducibility]
+
+- id: pylops
+  title: "PyLops - linear operators for inverse problems"
+  url: "https://pylops.readthedocs.io/en/latest"
+  kind: code
+  topic: shared
+  free: true
+  license: "LGPL-3.0 (not confirmed)"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Python linear-operator library with seismic tutorials (deconvolution, Radon, f-k style operators); listed in awesome-open-geoscience."
+  concepts: [deconvolution, fk-transform, inversion]
+
+- id: synthoseis
+  title: "synthoseis - pseudo-random synthetic seismic generator (Shell)"
+  url: "https://github.com/sede-open/synthoseis"
+  kind: code
+  topic: shared
+  free: true
+  license: "unknown"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Generates synthetic seismic volumes for ML training data; listed in awesome-open-geoscience."
+  concepts: [synthetic-data, synthetic-to-real]
+
+# ---------------------------------------------------------------- community
+- id: software-underground
+  title: "Software Underground (SWUNG)"
+  url: "https://softwareunderground.org/"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Non-profit community for code and geoscience: free chat, TRANSFORM conference (tutorials and talks), and GitHub projects."
+  concepts: [community, python, geoscience-software]
+
+- id: awesome-open-geoscience
+  title: "Awesome Open Geoscience (Software Underground)"
+  url: "https://github.com/softwareunderground/awesome-open-geoscience"
+  kind: code
+  topic: shared
+  free: true
+  license: "CC0 (not confirmed)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Curated list of open geoscience software, datasets, tutorials and cheat sheets (ObsPy, Devito, PyLops, bruges, SEG open data, Volve, etc.)."
+  concepts: [resource-list, datasets, software]
+
+# ---------------------------------------------------------------- ML
+- id: sklearn-common-pitfalls
+  title: "scikit-learn User Guide: Common pitfalls and recommended practices"
+  url: "https://scikit-learn.org/stable/common_pitfalls.html"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "BSD-3-Clause"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Shows data leakage with worked numbers: selecting features on all 200 samples of pure-noise data gives ~0.76 accuracy, versus the correct ~0.5 when selection is fitted on training data only. Recommends Pipelines."
+  concepts: [data-leakage, pipelines, preprocessing, train-test-split]
+
+- id: sklearn-cross-validation
+  title: "scikit-learn User Guide: Cross-validation"
+  url: "https://scikit-learn.org/stable/modules/cross_validation.html"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "BSD-3-Clause"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Explains KFold, StratifiedKFold (keeps class ratios), GroupKFold (keeps groups such as a well, cable or event together) and TimeSeriesSplit (trains on past, tests on future)."
+  concepts: [cross-validation, stratification, group-kfold, time-series-split]
+
+- id: sklearn-model-evaluation
+  title: "scikit-learn User Guide: Metrics and scoring"
+  url: "https://scikit-learn.org/stable/modules/model_evaluation.html"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "BSD-3-Clause"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Definitions of precision, recall, F-beta, balanced accuracy and average precision, with guidance for imbalanced classes (AP baseline equals the positive fraction)."
+  concepts: [precision, recall, f1, balanced-accuracy, average-precision, class-imbalance]
+
+- id: imbalanced-learn
+  title: "imbalanced-learn (imblearn)"
+  url: "https://imbalanced-learn.org/stable/"
+  kind: code
+  topic: shared
+  free: true
+  license: "MIT"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "scikit-learn-compatible library for resampling (over/under-sampling, SMOTE) and imbalance-aware ensembles."
+  concepts: [class-imbalance, resampling, smote]
+
+- id: cs229-notes
+  title: "Stanford CS229 Machine Learning main lecture notes (PDF)"
+  url: "https://cs229.stanford.edu/main_notes.pdf"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "unknown"
+  size: "5.1 MB"
+  level: intermediate
+  verified: true
+  summary: "Full CS229 notes: linear and logistic regression, generative models, SVMs, bias-variance, regularisation, neural networks, unsupervised learning."
+  concepts: [logistic-regression, bias-variance, regularization, neural-networks]
+
+- id: cs231n-notes
+  title: "Stanford CS231n: Deep Learning for Computer Vision - course notes"
+  url: "https://cs231n.github.io/"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "MIT (notes repo; not confirmed)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Notes on train/val/test splits, linear classifiers, backprop, training neural networks and CNN architectures. Applies directly to CNNs on spectrogram images."
+  concepts: [cnn, backpropagation, train-val-test, optimization]
+
+- id: cs231n-transfer-learning
+  title: "CS231n notes: Transfer Learning"
+  url: "https://cs231n.github.io/transfer-learning/"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "MIT (notes repo; not confirmed)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Four-case guide to transfer learning by dataset size and similarity: linear classifier on features versus fine-tuning the whole network."
+  concepts: [transfer-learning, fine-tuning, synthetic-to-real]
+
+- id: fastai-course
+  title: "fast.ai Practical Deep Learning for Coders"
+  url: "https://course.fast.ai/"
+  kind: course
+  topic: shared
+  free: true
+  license: "unknown (free course)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Free 9-lesson (about 90 minutes each) top-down deep learning course using PyTorch; needs about a year of Python, no advanced maths."
+  concepts: [cnn, transfer-learning, pytorch, random-forest]
+
+- id: pytorch-basics
+  title: "PyTorch Tutorials: Learn the Basics"
+  url: "https://docs.pytorch.org/tutorials/beginner/basics/intro.html"
+  kind: tutorial
+  topic: shared
+  free: true
+  license: "BSD-3-Clause (pytorch/tutorials; not confirmed)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Official step-by-step PyTorch intro: tensors, Datasets/DataLoaders, transforms, building a model, autograd, training loop, saving models."
+  concepts: [pytorch, dataloader, training-loop, autograd]
+
+- id: settles-active-learning
+  title: "Settles (2009), Active Learning Literature Survey (UW-Madison TR1648)"
+  url: "https://research.cs.wisc.edu/techreports/2009/TR1648.pdf"
+  kind: paper
+  topic: shared
+  free: true
+  license: "unknown"
+  size: "1.5 MB"
+  level: intermediate
+  verified: true
+  summary: "Standard introduction to active learning: pool-based and stream-based settings, uncertainty sampling, query-by-committee, expected model change and density weighting."
+  concepts: [active-learning, uncertainty-sampling, query-by-committee, labeling-budget]
+
+- id: ohem-paper
+  title: "Shrivastava, Gupta, Girshick (2016), Training Region-based Object Detectors with Online Hard Example Mining"
+  url: "https://arxiv.org/abs/1604.03540"
+  kind: paper
+  topic: shared
+  free: true
+  license: "arXiv non-exclusive"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Online hard example mining: train mostly on the examples with the highest loss, because easy negatives dominate datasets. Reported 78.9% mAP on VOC 2007."
+  concepts: [hard-example-mining, class-imbalance, loss-weighting]
+
+- id: mlreal-paper
+  title: "Alkhalifah, Wang, Ovcharenko (2021), MLReal: Bridging the gap between training on synthetic data and real data applications"
+  url: "https://arxiv.org/abs/2109.05294"
+  kind: paper
+  topic: shared
+  free: true
+  license: "arXiv non-exclusive"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Domain adaptation for waveform ML: cross-correlate inputs with a reference trace and convolve with autocorrelations from the other domain so synthetic-trained networks work on field data."
+  concepts: [synthetic-to-real, domain-adaptation, cross-correlation]
+
+- id: seg-2016-ml-contest
+  title: "SEG 2016 ML contest and Hall (2016) 'Facies classification using machine learning' notebook"
+  url: "https://github.com/seg/2016-ml-contest"
+  kind: notebook
+  topic: shared
+  free: true
+  license: "Code Apache-2.0; text CC-BY; dataset NOT openly licensed"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Classic beginner geoscience-ML notebook (SVM on well logs) plus ~50 team solutions. Best median F1-micro was about 0.64, and leave-one-well-out testing shows why grouped validation matters."
+  concepts: [classification, feature-engineering, group-kfold, svm, gradient-boosting]
+
+# ---------------------------------------------------------------- ML on seismic signals: papers & toolkits
+- id: seisbench-paper
+  title: "Woollam et al. (2021), SeisBench - A Toolbox for Machine Learning in Seismology"
+  url: "https://arxiv.org/abs/2111.00786"
+  kind: paper
+  topic: shared
+  free: true
+  license: "arXiv non-exclusive"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Open-source Python framework giving one interface to seismic ML benchmark datasets, pretrained pickers and augmentation tools."
+  concepts: [seisbench, benchmark-datasets, data-augmentation, phase-picking]
+
+- id: phasenet-paper
+  title: "Zhu & Beroza (2018), PhaseNet: a deep-neural-network-based seismic arrival time picking method"
+  url: "https://arxiv.org/abs/1803.03211"
+  kind: paper
+  topic: shared
+  free: true
+  license: "arXiv non-exclusive"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "U-Net style network that turns 3-component waveforms into P, S and noise probability curves; peaks give arrival times."
+  concepts: [phase-picking, u-net, segmentation, cnn]
+
+- id: convnetquake-paper
+  title: "Perol, Gharbi, Denolle (2018), Convolutional neural network for earthquake detection and location"
+  url: "https://arxiv.org/abs/1702.02073"
+  kind: paper
+  topic: shared
+  free: true
+  license: "arXiv non-exclusive"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Frames detection as classification of waveform windows with a CNN (ConvNetQuake); in Oklahoma it found about 20 times more events than the existing catalogue."
+  concepts: [event-detection, cnn, classification, induced-seismicity]
+
+- id: eqtransformer-paper
+  title: "Mousavi et al. (2020), Earthquake Transformer (Nature Communications, open access)"
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7415159"
+  kind: paper
+  topic: shared
+  free: true
+  license: "CC-BY 4.0"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Joint detection and P/S picking with CNN + LSTM + attention, trained on STEAD (1-minute, 100 Hz windows, 85/5/10 split). Near-perfect detection on the STEAD test set."
+  concepts: [event-detection, phase-picking, attention, stead, train-val-test]
+
+- id: cred-paper
+  title: "Mousavi et al. (2019), CRED: deep residual network of convolutional and recurrent units for earthquake signal detection"
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6635521"
+  kind: paper
+  topic: shared
+  free: true
+  license: "CC-BY 4.0 (Scientific Reports, not confirmed)"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Detector that learns time-frequency (spectrogram) features of 3-component data with CNN + bidirectional LSTM; trained on 500,000 balanced earthquake/noise seismograms."
+  concepts: [spectrogram, cnn, lstm, event-detection]
+
+# ---------------------------------------------------------------- datasets (NOT downloaded)
+- id: stead-dataset
+  title: "STEAD - STanford EArthquake Dataset"
+  url: "https://github.com/smousavi05/STEAD"
+  kind: dataset
+  topic: shared
+  free: true
+  license: "CC-BY 4.0"
+  size: "~85 GB merged HDF5 (SeisBench lists ~70 GB waveforms + 200 MB metadata)"
+  level: intermediate
+  verified: true
+  summary: "About 1.2 million labelled 3-component 1-minute, 100 Hz traces of local earthquakes and noise from >2,600 stations; the standard earthquake-vs-noise benchmark."
+  concepts: [benchmark-datasets, earthquake-vs-noise, classification, hdf5]
+
+- id: instance-dataset
+  title: "INSTANCE - Italian seismic dataset for machine learning (Michelini et al., 2021, ESSD)"
+  url: "https://essd.copernicus.org/articles/13/5509/2021/"
+  kind: dataset
+  topic: shared
+  free: true
+  license: "unknown (paper is CC-BY 4.0; check DOI 10.13127/instance)"
+  size: "~160 GB counts + ~310 GB ground-motion versions (per SeisBench)"
+  level: intermediate
+  verified: false
+  summary: "About 1.2 million 3-component earthquake traces (~50,000 events) plus ~130,000 noise traces, 120 s long at 100 Hz, from Italian networks 2005-2020."
+  concepts: [benchmark-datasets, earthquake-vs-noise, hdf5]
+
+- id: seisbench-datasets
+  title: "SeisBench documentation: Benchmark Datasets"
+  url: "https://seisbench.readthedocs.io/en/main/pages/data/benchmark_datasets.html"
+  kind: dataset
+  topic: shared
+  free: true
+  license: "varies per dataset (not stated on page)"
+  size: "from ~5 GB (Iquique) to ~660 GB (SCEDC)"
+  level: intermediate
+  verified: true
+  summary: "Catalogue of datasets loadable through SeisBench, with sizes and trace counts: ETHZ, GEOFON, INSTANCE, Iquique, LEN-DB, NEIC, OBS, PNW, SCEDC, STEAD, TXED, CEED."
+  concepts: [benchmark-datasets, seisbench]
+
+- id: lendb-dataset
+  title: "LEN-DB (via SeisBench)"
+  url: "https://seisbench.readthedocs.io/en/main/pages/data/benchmark_datasets.html"
+  kind: dataset
+  topic: shared
+  free: true
+  license: "unknown"
+  size: "~20 GB waveforms + ~218 MB metadata"
+  level: intermediate
+  verified: true
+  summary: "About 1.25 million examples including ~618,000 noise windows; a large earthquake-vs-noise set that is a good, lighter alternative to STEAD."
+  concepts: [benchmark-datasets, earthquake-vs-noise]
+
+- id: txed-dataset
+  title: "TXED - Texas earthquake dataset (via SeisBench)"
+  url: "https://seisbench.readthedocs.io/en/main/pages/data/benchmark_datasets.html"
+  kind: dataset
+  topic: shared
+  free: true
+  license: "unknown"
+  size: "~70 GB waveforms + 120 MB metadata"
+  level: intermediate
+  verified: true
+  summary: "About 500,000 traces (~300,000 earthquake, ~200,000 noise) from Texas, including oil-field induced seismicity regions."
+  concepts: [benchmark-datasets, earthquake-vs-noise, induced-seismicity]
+
+- id: iquique-dataset
+  title: "Iquique aftershock dataset (via SeisBench)"
+  url: "https://seisbench.readthedocs.io/en/main/pages/data/benchmark_datasets.html"
+  kind: dataset
+  topic: shared
+  free: true
+  license: "unknown"
+  size: "~5 GB waveforms + ~2.6 MB metadata"
+  level: beginner
+  verified: true
+  summary: "Smallest SeisBench set (13,400 examples, 100 Hz); good for laptop-scale first experiments."
+  concepts: [benchmark-datasets, phase-picking]
+
+- id: ethz-dataset
+  title: "ETHZ Swiss dataset (via SeisBench)"
+  url: "https://seisbench.readthedocs.io/en/main/pages/data/benchmark_datasets.html"
+  kind: dataset
+  topic: shared
+  free: true
+  license: "unknown"
+  size: "~22 GB waveforms + ~13 MB metadata"
+  level: beginner
+  verified: true
+  summary: "36,743 waveform examples from Switzerland; a mid-sized set for picking/detection exercises."
+  concepts: [benchmark-datasets, phase-picking]

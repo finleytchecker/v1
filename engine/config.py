@@ -1,6 +1,7 @@
 """Reads the two config files. Every script gets the region and settings from here."""
 from __future__ import annotations
 
+import os
 import socket
 from pathlib import Path
 
@@ -43,6 +44,8 @@ def load_settings(config_dir: Path = CONFIG_DIR) -> dict:
 
 
 def database_path(settings: dict | None = None) -> Path:
+    if os.environ.get("V1_DB"):          # lets tests / trial runs use a separate logbook
+        return Path(os.environ["V1_DB"])
     settings = settings or load_settings()
     p = Path(settings["database"])
     return p if p.is_absolute() else PROJECT_ROOT / p

@@ -1,0 +1,858 @@
+# Source catalog for the V1 "Leak" module (DAS + acoustic leak detection).
+# verified: true  -> the URL was fetched during research (Nov 2026)
+# verified: false -> URL seen in search results only (or fetch was blocked: 403/404/503)
+# size: total dataset size where stated by the host or the dataset paper. Nothing has been downloaded.
+
+# ---------------------------------------------------------------- DAS fundamentals / reviews
+- id: xenaki-das-overview-2025
+  title: "Overview of distributed acoustic sensing: Theory and ocean applications (Xenaki, Gerstoft, Williams, Abadi)"
+  url: "https://arxiv.org/html/2502.18344v3"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Tutorial-style review of DAS physics, from laser pulse and Rayleigh backscatter to phase, strain and strain rate, with real acquisition parameters (pulse width, gauge length, 2 m channels, 200-500 Hz) and processing steps (band-pass, f-k, beamforming). The best single starting point for the theory."
+  concepts: [rayleigh-backscatter, phase-to-strain, gauge-length, channel-spacing, pulse-repetition-rate, fk-filtering, strain-rate]
+
+- id: wikipedia-das
+  title: "Distributed acoustic sensing (Wikipedia)"
+  url: "https://en.wikipedia.org/wiki/Distributed_acoustic_sensing"
+  kind: lecture-notes
+  topic: leak
+  free: true
+  license: "CC-BY-SA 4.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Short plain-language overview: pulse, backscatter, gauge length about equal to pulse length, typical range 40-50 km, ~10 m resolution from a 100 ns pulse, and applications including pipeline leak monitoring."
+  concepts: [das-basics, gauge-length, sensing-range, spatial-resolution, das-applications]
+
+- id: lindsey-martin-2021-review
+  title: "Fiber-Optic Seismology (Lindsey & Martin, Annual Review of Earth and Planetary Sciences 2021) - preprint"
+  url: "https://vtechworks.lib.vt.edu/items/c1a36403-7b48-4543-b117-462a9cba2529/full"
+  kind: paper
+  topic: leak
+  free: true
+  license: "In Copyright (free preprint download)"
+  size: "39 MB PDF"
+  level: intermediate
+  verified: true
+  summary: "Widely cited review of DAS for geophysics: how a fibre becomes a dense strain array (1-10 m spacing over kilometres) and a decade of applications from imaging to earthquakes to urban infrastructure signals."
+  concepts: [das-basics, fiber-seismology, das-applications, urban-das]
+
+- id: pubdas-spica-2023
+  title: "PubDAS: A PUBlic Distributed Acoustic Sensing Datasets Repository for Geosciences (Spica et al., SRL 2023)"
+  url: "https://par.nsf.gov/servlets/purl/10437086"
+  kind: paper
+  topic: leak
+  free: true
+  license: "unknown (NSF public access copy)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Describes the eight PubDAS datasets (~90 TB total) with a table of interrogator, format, sample rate, gauge length, cable length and channel spacing for each, plus a clear short primer on gauge length vs channel spacing."
+  concepts: [open-das-datasets, gauge-length, channel-spacing, data-formats, globus]
+
+- id: ajo-franklin-2019-dark-fiber
+  title: "Distributed Acoustic Sensing Using Dark Fiber for Near-Surface Characterization and Broadband Seismic Event Detection (Ajo-Franklin et al., Sci. Rep. 2019)"
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6362068"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY 4.0 (Scientific Reports journal default; not restated on page)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "The FOSSA experiment: 27 km of unused telecom fibre near Sacramento recorded at 2 m spacing, 10 m gauge, 500 Hz for 7 months (~0.3 PB). Explains which frequency bands traffic, trains and earthquakes occupy."
+  concepts: [dark-fiber, urban-das, traffic-noise, data-volume, ambient-noise]
+
+# ---------------------------------------------------------------- Traffic / urban signals
+- id: lindsey-2020-covid-traffic
+  title: "City-Scale Dark Fiber DAS Measurements of Infrastructure Use During the COVID-19 Pandemic (Lindsey et al., GRL 2020)"
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7435531"
+  kind: paper
+  topic: leak
+  free: true
+  license: "AGU All Rights Reserved (free to read on PMC)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Counts cars on Stanford-area roads with telecom fibre. Cars produce a slow (0.1-1 Hz) quasi-static strain blob moving at road speed plus 3-30 Hz surface waves; 450,000 detections showed a ~50% traffic drop under lockdown."
+  concepts: [traffic-signals, quasi-static-strain, waterfall-slope, vehicle-detection, urban-das]
+
+- id: stanford-covid-das-data
+  title: "Data for 'City-scale dark fiber DAS measurements of infrastructure use during the COVID-19 pandemic' (Stanford Digital Repository)"
+  url: "https://purl.stanford.edu/bt630qc9349"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "unknown (no open licence listed; privacy-use conditions)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Urban DAS data from an OptaSense ODH3 on the Stanford SandHill fibre plus analysis products for the traffic study. Good real example of traffic streaks in a waterfall."
+  concepts: [traffic-signals, open-das-datasets, urban-das]
+
+- id: wang-2024-traffic-das
+  title: "Traffic Flow and Speed Monitoring Based On Optical Fiber Distributed Acoustic Sensor (Wang et al., arXiv 2402.09422)"
+  url: "https://arxiv.org/html/2402.09422v2"
+  kind: paper
+  topic: leak
+  free: true
+  license: "arXiv non-exclusive licence"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Simple pipeline for traffic in waterfall images: denoise, low-pass, find peaks, fit straight trajectories whose slope is vehicle speed; reports counting accuracy on a highway and a tunnel."
+  concepts: [waterfall-slope, traffic-signals, peak-detection, vehicle-speed]
+
+- id: yuan-2023-deconv-unet
+  title: "Spatial Deep Deconvolution U-Net for Traffic Analyses with Distributed Acoustic Sensing (Yuan et al., arXiv 2212.03936)"
+  url: "https://arxiv.org/abs/2212.03936"
+  kind: paper
+  topic: leak
+  free: true
+  license: "arXiv non-exclusive licence"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Self-supervised U-Net that sharpens blurry car signals in urban DAS into narrow pulses so close cars and remote lanes can be separated and axles counted."
+  concepts: [traffic-signals, deep-learning, self-supervised, deconvolution]
+
+- id: liu-2024-vehicle-das
+  title: "Characterizing Vehicle-Induced Distributed Acoustic Sensing Signals for Accurate Urban Near-Surface Imaging (Liu et al., SRL 2025, arXiv 2408.14320)"
+  url: "https://arxiv.org/abs/2408.14320"
+  kind: paper
+  topic: leak
+  free: true
+  license: "arXiv non-exclusive licence"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Sorts vehicles into light/mid/heavy by quasi-static strain amplitude, with speeds of 5-30 m/s, and shows heavier vehicles give cleaner surface waves. Useful numbers for synthetic traffic generation."
+  concepts: [traffic-signals, quasi-static-strain, vehicle-speed, surface-waves]
+
+# ---------------------------------------------------------------- Leak acoustics (pipes)
+- id: almeida-2014-plastic-pipe-filtering
+  title: "On the Acoustic Filtering of the Pipe and Sensor in a Buried Plastic Water Pipe and its Effect on Leak Detection (Almeida et al., Sensors 2014)"
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4004009"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY 3.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Field-rig study of leak noise in a buried plastic pipe: wave speed ~356 m/s, usable bands of 10-28 Hz (hydrophone) to 10-104 Hz (accelerometer), attenuation formula, and the correlator location equation with worked numbers."
+  concepts: [leak-noise-spectrum, pipe-wave-speed, attenuation, cross-correlation, hydrophone, accelerometer, plastic-pipes]
+
+- id: brennan-soton-plastic-leak-article
+  title: "Some Recent Research Results on the use of Acoustic Methods to Detect Water Leaks in Buried Plastic Water Pipes (Brennan, Joseph, Muggleton, Gao; ISVR Southampton)"
+  url: "https://www.southampton.ac.uk/assets/imported/transforms/content-block/UsefulDownloads_Download/0994871B7147466F974C6D5A06D5E33C/Water%20Leak%20Detection%20in%20Plastic%20Pipes%5B1%5D.pdf"
+  kind: lecture-notes
+  topic: leak
+  free: true
+  license: "unknown"
+  size: "175 KB"
+  level: beginner
+  verified: true
+  summary: "Very readable short article: why correlators struggle on plastic pipe, why leak noise travels at ~400 m/s in MDPE, why the pipe acts as a low-pass filter, and how longer recordings improve SNR by 3 dB per doubling."
+  concepts: [cross-correlation, pipe-wave-speed, low-pass-pipe, plastic-pipes, snr-averaging]
+
+- id: butterfield-2017-backfill-mdpe
+  title: "Experimental investigation into the influence of backfill types on the vibro-acoustic characteristics of leaks in MDPE pipe (Butterfield et al., Procedia Eng. 2017)"
+  url: "https://eprints.whiterose.ac.uk/121851/1/1-s2.0-S1877705817314054-main.pdf"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY-NC-ND 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Lab loop of 63 mm MDPE pipe: leak energy starts above ~214 Hz on pipe-wall accelerometers, background noise dominates below that, and backfill type changes amplitude more than frequency. Also summarises earlier field findings (e.g. a 55-65 Hz main peak in Ottawa tests)."
+  concepts: [leak-noise-spectrum, backfill, plastic-pipes, accelerometer, pressure-head]
+
+- id: scussel-2023-acoustics-bandwidth
+  title: "Key factors that influence the frequency range of measured leak noise in buried plastic water pipes (Scussel et al., Acoustics 2023)"
+  url: "https://eprints.soton.ac.uk/483212/1/acoustics_05_00029.pdf"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY 4.0 (MDPI Acoustics)"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Model-based analysis of how pipe, soil and sensor type set the usable leak-noise bandwidth in buried plastic pipes. Fetch was blocked (403)."
+  concepts: [leak-noise-spectrum, plastic-pipes, soil-coupling, sensor-response]
+
+- id: scussel-2020-leak-spectrum
+  title: "Estimating the spectrum of leak noise in buried plastic water distribution pipes (Scussel et al., MSSP 2020, accepted manuscript)"
+  url: "https://eprints.soton.ac.uk/441649/1/LeakSpectrum_MSSP20_642_accepted.pdf"
+  kind: paper
+  topic: leak
+  free: true
+  license: "unknown (accepted manuscript)"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Estimates the leak source spectrum from field data and argues a single power law (e.g. 1/f) does not always describe it. Fetch blocked (403)."
+  concepts: [leak-noise-spectrum, power-law]
+
+- id: papastefanou-2011-thesis
+  title: "An experimental investigation of leak noise from water filled plastic pipes (Papastefanou, PhD thesis, Southampton 2011)"
+  url: "https://eprints.soton.ac.uk/190853/1/P2783.pdf"
+  kind: thesis
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: advanced
+  verified: false
+  summary: "PhD thesis; per its abstract the leak-noise spectrum falls off roughly as 1/frequency up to a cutoff set by leak size and jet velocity. Fetch blocked (403)."
+  concepts: [leak-noise-spectrum, power-law, turbulent-jet, plastic-pipes]
+
+- id: gao-2004-correlation-model
+  title: "A model of the correlation function of leak noise in buried plastic pipes (Gao, Brennan, Joseph, Muggleton, Hunaidi; JSV 2004) - repository record"
+  url: "https://eprints.soton.ac.uk/28267"
+  kind: paper
+  topic: leak
+  free: false
+  license: "unknown (journal paper; repository record)"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Classic analytical model of what a correlator's cross-correlation peak looks like in plastic pipe, given wave speed and attenuation. Free full text not confirmed."
+  concepts: [cross-correlation, pipe-wavenumber, attenuation]
+
+- id: hunaidi-2000-detecting-leaks-plastic
+  title: "Detecting Leaks in Plastic Pipes (Hunaidi, Chu, Wang, Guan; Journal AWWA 2000)"
+  url: "https://www.typeset.io/pdf/detecting-leaks-in-plastic-pipes-38jizmyv1f.pdf"
+  kind: paper
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "NRC Canada field work showing commercial correlators failed on plastic pipe mainly because they listened at too-high frequencies; plastic-pipe leak noise is dominated by low frequencies."
+  concepts: [plastic-pipes, cross-correlation, leak-noise-spectrum]
+
+- id: subband-leak-patent
+  title: "Frequency sub-band leak detection (US patent 10539480)"
+  url: "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10539480"
+  kind: paper
+  topic: leak
+  free: true
+  license: "public domain (US patent)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Patent describing leak detection by splitting the spectrum into sub-bands; gives example bands such as ~200-800 Hz for 6-inch cast-iron mains and ~500-1200 Hz for service-line leaks (seen in search snippet)."
+  concepts: [leak-noise-spectrum, metal-pipes, band-power-features]
+
+# ---------------------------------------------------------------- DAS / fibre for leaks
+- id: stajanca-2018-das-leak
+  title: "Detection of Leak-Induced Pipeline Vibrations Using Fiber-Optic Distributed Acoustic Sensing (Stajanca et al., Sensors 2018)"
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6164018"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Key DAS-leak lab study: fibre helically wrapped on a pressurised pipe sees leak vibration mainly at 500 Hz-5 kHz; leaks down to 1 mm at 5 bar were detected by integrating band power (500-5000 Hz) per fibre bin, i.e. a steady band-limited energy fixed in space."
+  concepts: [das-leak-detection, band-power-features, helical-wrapping, pressurised-pipe, stft]
+
+- id: bertulessi-2023-brillouin-water
+  title: "Experimental Investigations of Distributed Fiber Optic Sensors for Water Pipeline Monitoring (Bertulessi et al., Sensors 2023)"
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10346350"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Uses Brillouin (slow, static strain) rather than DAS on HDPE water pipes to sense pressure-driven hoop strain and leaks; a useful contrast showing what static fibre sensing can and cannot see."
+  concepts: [brillouin-sensing, water-pipes, hoop-strain, pressure]
+
+- id: openreach-affinity-trial
+  title: "Openreach / Affinity Water / Lightsonic DAS water-leak trial (Smart Water Magazine news report)"
+  url: "https://smartwatermagazine.com/news/smart-water-magazine/fibre-optic-sensing-trial-detects-more-100-leaks-affinity-waters-network"
+  kind: paper
+  topic: leak
+  free: true
+  license: "unknown (news article)"
+  size: null
+  level: beginner
+  verified: false
+  summary: "News coverage of a 2026 UK trial using spare telecom fibre with DAS over ~650 km of water network; partners report 100+ leaks found in three months. Company-reported, not peer reviewed."
+  concepts: [das-leak-detection, telecom-fiber, water-mains]
+
+- id: aguilar-lopez-2019-levee-das
+  title: "Fiber optic distributed acoustic sensing for levee monitoring (Aguilar Lopez et al., EGU 2019 abstract)"
+  url: "https://repository.tudelft.nl/record/uuid:c3816121-4354-4046-a15b-37cab3d3363f"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY 4.0"
+  size: "0.11 MB"
+  level: intermediate
+  verified: true
+  summary: "Short conference abstract on using DAS along dikes/levees, where seepage and internal erosion are the 'groundwater leak' analogue."
+  concepts: [groundwater-seepage, levee-monitoring, das-leak-detection]
+
+# ---------------------------------------------------------------- ML / event classification
+- id: bublin-2021-event-detection
+  title: "Event Detection for Distributed Acoustic Sensing: Combining Knowledge-Based, Classical Machine Learning, and Deep Learning Approaches (Bublin, Sensors 2021)"
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8618866/"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY 4.0"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Real 17 km pipeline-protection deployment: classifies excavator vs no-excavator from 1-100 Hz band powers (kNN/RF/SVM) and from waterfall images (CNN), and shows heuristic rules are needed to cut false alarms to under one per month."
+  concepts: [event-classification, band-power-features, cnn, false-alarms, class-imbalance, digging]
+
+- id: shi-2025-benchmark-ml-das
+  title: "Benchmarking Machine Learning Methods for Distributed Acoustic Sensing (Shi & Zong, arXiv 2503.20681)"
+  url: "https://arxiv.org/pdf/2503.20681"
+  kind: paper
+  topic: leak
+  free: true
+  license: "arXiv non-exclusive licence"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Compares LR, SVM, kNN, XGBoost against MLP, ResNet, LSTM, Transformer and Mamba on a Swiss railway DAS dataset with vehicle, random, slope-failure and narrow-band noise classes; ResNet best (0.958 accuracy), SVM close (0.950)."
+  concepts: [event-classification, benchmarking, narrow-band-noise, cnn, svm]
+
+- id: shao-2025-ai-das-photonix
+  title: "Artificial intelligence-driven distributed acoustic sensing technology and engineering application (Shao et al., PhotoniX 2025)"
+  url: "https://ira.lib.polyu.edu.hk/bitstream/10397/117901/1/s43074-025-00160-z.pdf"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY 4.0"
+  size: "3.4 MB PDF"
+  level: intermediate
+  verified: true
+  summary: "Broad open-access review of AI for DAS: preprocessing, features, CNN/LSTM/YOLO models, and applications including pipeline safety and leakage; notes data volumes like ~650 GB/day for 2 km at 1 m and 2 kHz."
+  concepts: [event-classification, deep-learning, data-volume, pipeline-safety]
+
+- id: bjtu-phi-otdr-dataset
+  title: "BJTUSensor Phi-OTDR dataset and codes (Cao et al., Results in Optics 2023)"
+  url: "https://github.com/BJTUSensor/Phi-OTDR_dataset_and_codes"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "non-commercial research use with citation (no formal licence)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "First widely used open phi-OTDR event dataset: ~15.4k samples of 12 channels x 10,000 time points in six classes (background, digging, knocking, watering, shaking, walking), with SVM and CNN baselines. Data on Google Drive/Baidu."
+  concepts: [event-classification, labelled-dataset, digging, cnn, svm]
+
+- id: tomasov-das-event-dataset
+  title: "Comprehensive Dataset for Event Classification Using Distributed Acoustic Sensing (DAS) Systems (Tomasov et al., Scientific Data 2025) - figshare"
+  url: "https://springernature.figshare.com/articles/dataset/Comprehensive_Dataset_for_Event_Classification_Using_Distributed_Acoustic_Sensing_DAS_Systems/27004732"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "unknown (Scientific Data datasets are usually CC-BY; not confirmed)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Labelled and unlabelled phi-OTDR recordings around a Czech university campus (walking, running, vehicles, security events) with a CNN baseline. Figshare page blocked (403); paper DOI 10.1038/s41597-025-05088-4."
+  concepts: [event-classification, labelled-dataset, traffic-signals]
+
+- id: mendeley-das-power-cable
+  title: "DAS - buried power-cable intrusion event dataset (Mendeley Data fp77d4223z, 2025)"
+  url: "https://data.mendeley.com/datasets/fp77d4223z/1"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "CC-BY 4.0 on page (description also says CC-BY-NC 4.0)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Small CSV dataset of single-channel 5 kHz DAS windows (2,500 points) labelled hammering, background, vehicle, rainfall and fan interference; easy first classifier exercise."
+  concepts: [event-classification, labelled-dataset, csv, rain-noise]
+
+# ---------------------------------------------------------------- Open DAS datasets
+- id: pubdas-globus
+  title: "PubDAS repository (University of Michigan Globus endpoint)"
+  url: "https://app.globus.org/file-manager?origin_id=706e304c-5def-11ec-9b5c-f9dfb1abb183&origin_path=%2F"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "per-dataset licence file (see PubDAS paper)"
+  size: "~90 TB"
+  level: intermediate
+  verified: false
+  summary: "Eight geoscience DAS datasets (Fairbanks, FORESEE, FOSSA, LaFarge, Stanford-1/2/3, Valencia) in TDMS, HDF5 and SEG-Y; free Globus account and Globus Connect Personal needed."
+  concepts: [open-das-datasets, globus, data-formats]
+
+- id: pubdas-foresee
+  title: "PubDAS: FORESEE array (Penn State campus, 2019-2020)"
+  url: "https://app.globus.org/file-manager?origin_id=706e304c-5def-11ec-9b5c-f9dfb1abb183&origin_path=%2FFORESEE%2F"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "see PubDAS licence file"
+  size: "~29.3 TB"
+  level: intermediate
+  verified: false
+  summary: "One year of urban campus DAS (4.9 km telecom fibre in conduit, 10 m gauge, 2 m spacing, downsampled to 125 Hz HDF5) with cars, footsteps, music events and earthquakes. Size from PubDAS Table 1."
+  concepts: [open-das-datasets, urban-das, traffic-signals]
+
+- id: pubdas-fossa
+  title: "PubDAS: FOSSA (Sacramento dark fibre, 2017-2018)"
+  url: "https://app.globus.org/file-manager?origin_id=706e304c-5def-11ec-9b5c-f9dfb1abb183&origin_path=%2FFOSSA%2F"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "see PubDAS licence file"
+  size: "~11.7 TB"
+  level: intermediate
+  verified: false
+  summary: "7-day PubDAS subset of the 23 km FOSSA dark-fibre array (500 Hz, 10 m gauge, 2 m spacing, TDMS) along roads and rail. Size from PubDAS Table 1."
+  concepts: [open-das-datasets, dark-fiber, traffic-signals]
+
+- id: pubdas-stanford-1
+  title: "PubDAS: Stanford-1 campus array (2016-2019)"
+  url: "https://app.globus.org/file-manager?origin_id=706e304c-5def-11ec-9b5c-f9dfb1abb183&origin_path=%2FStanford-1-Campus%2F&two_pane=false"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "see PubDAS licence file"
+  size: "~18.9 TB"
+  level: intermediate
+  verified: false
+  summary: "About 940 days of 50 Hz SEG-Y data from a 2.5 km figure-eight telecom-conduit loop under Stanford campus (8.16 m channel spacing, OptaSense ODH3); rich in footsteps and traffic. Size from PubDAS Table 1."
+  concepts: [open-das-datasets, urban-das, traffic-signals]
+
+- id: pubdas-fairbanks
+  title: "PubDAS: Fairbanks permafrost thaw experiment (2016)"
+  url: "https://app.globus.org/file-manager?origin_id=706e304c-5def-11ec-9b5c-f9dfb1abb183&origin_path=%2FFairbanks%2F"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "see PubDAS licence file"
+  size: "~10.4 TB"
+  level: advanced
+  verified: false
+  summary: "Trenched surface fibre lines (1 m spacing, 10 m gauge, 1 kHz TDMS) recording active vibrator sweeps during controlled permafrost heating; a rare 'subsurface change over time' dataset. Size from PubDAS Table 1."
+  concepts: [open-das-datasets, active-source, time-lapse]
+
+- id: porotomo-gdr-980
+  title: "PoroTomo Natural Laboratory Horizontal and Vertical DAS Data (GDR submission 980)"
+  url: "https://gdr.openei.org/submissions/980"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "CC-BY 4.0"
+  size: "~172 TB (S3 data lake; DASH HDF5 ~81 TB, DASV HDF5 ~1.3 TB)"
+  level: advanced
+  verified: true
+  summary: "Brady Hot Springs geothermal field, March 2016: zig-zag trenched horizontal fibre plus 363 m vertical well fibre, in 30 s SEG-Y/HDF5 files, also readable over HSDS without full download."
+  concepts: [open-das-datasets, geothermal, hdf5, segy, cloud-access]
+
+- id: forge-78-32-gdr-1185
+  title: "Utah FORGE: High-Resolution DAS Microseismic Data from Well 78-32 (GDR submission 1185)"
+  url: "https://gdr.openei.org/submissions/1185"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "CC-BY 4.0"
+  size: "not stated ('very large'; download script 7.4 MB)"
+  level: advanced
+  verified: true
+  summary: "Silixa downhole DAS recorded during stimulation of FORGE well 58-32; hosted at Univ. of Utah CHPC and fetched via a shell script, SEG-Y format."
+  concepts: [open-das-datasets, microseismic, borehole-das, segy]
+
+- id: forge-lowfreq-das-2024
+  title: "Utah FORGE 3-2417: Low Frequency DAS Data from 16A/16B Stimulation - April 2024 (OEDI 8468)"
+  url: "https://data.openei.org/submissions/8468"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "CC-BY 4.0 (OEDI default)"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Low-pass (0.5 Hz) processed DAS from FORGE wells, April 2-12 2024, showing slow strain from hydraulic stimulation. Page returned 'No data found' when fetched."
+  concepts: [open-das-datasets, low-frequency-das, borehole-das]
+
+- id: forge-neubrex-2024
+  title: "Utah FORGE: Neubrex Well 16B(78)-32 DAS Data - April 2024 (data.gov catalog)"
+  url: "https://catalog.data.gov/dataset/utah-forge-neubrex-well-16b78-32-das-data-april-2024-6df28"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Raw HDF5 downhole DAS at 10 kHz in 12 s files, April 9-24 2024 (from search snippet)."
+  concepts: [open-das-datasets, borehole-das, hdf5]
+
+- id: das4whale-zenodo
+  title: "DAS4Whale: Svalbard distributed acoustic sensing dataset for baleen whale monitoring (Zenodo 5823343)"
+  url: "https://zenodo.org/records/5823343"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "CC-BY 4.0"
+  size: "37.6 GB"
+  level: intermediate
+  verified: true
+  summary: "Submarine telecom cable off Svalbard, 645.16 Hz, ~4 m spacing, channels 5001-25000, as 160-720 s .mat (HDF5) files. A manageable size for local experiments with narrow-band tonal signals (whale calls)."
+  concepts: [open-das-datasets, narrow-band-signals, submarine-das, hdf5]
+
+- id: quakeflow-das-hf
+  title: "AI4EPS/quakeflow_das (Hugging Face) - DAS earthquake event files for PhaseNet-DAS"
+  url: "https://huggingface.co/datasets/AI4EPS/quakeflow_das"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "MIT"
+  size: "674 GB"
+  level: intermediate
+  verified: true
+  summary: "Event-cut HDF5 files (channels x time, microstrain/s, with dt and dx attributes) from Ridgecrest (751 events), Arcata (2,470) and SeaFOAM Monterey Bay; files can be fetched one at a time."
+  concepts: [open-das-datasets, earthquakes, hdf5, ml-ready]
+
+- id: ooi-rca-das
+  title: "OOI Regional Cabled Array DAS experiment data (Nov 2021)"
+  url: "http://piweb.ooirsn.uw.edu/das/"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "unknown"
+  size: "~850 MB per 60 s file (32,600 channels); full set TB-scale"
+  level: intermediate
+  verified: false
+  summary: "Two ~66 km Oregon seafloor cables, 2.04 m channels, ~50 m gauge, 200-500 Hz; used by the das4whales tutorial. Server returned 503 when fetched."
+  concepts: [open-das-datasets, submarine-das, hdf5]
+
+- id: seafoam-ncedc
+  title: "SeaFOAM / MBARI MARS cable DAS (NCEDC assembled data)"
+  url: "https://ncedc.org/ftp/pub/assembled/das-mbari_1/"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "One year (Oct 2023 - Oct 2024) of HDF5 DAS on the 52 km Monterey Bay MARS cable, organised by day (from search snippet; README fetch 404)."
+  concepts: [open-das-datasets, submarine-das, hdf5]
+
+- id: stanford-das-earthquake-zenodo
+  title: "Stanford DAS earthquake and noise TFRecords (Zenodo 6344570)"
+  url: "https://zenodo.org/record/6344570"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Processed TensorFlow Records of earthquake vs background-noise windows from the Stanford campus DAS array (seen in search)."
+  concepts: [open-das-datasets, ml-ready, earthquakes]
+
+- id: garner-valley-gdr-614
+  title: "Garner Valley DAS/DTS shaker experiment (GDR submission 614)"
+  url: "https://gdr.openei.org/submissions/614"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "CC-BY 4.0 (GDR default)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "2013 trenched-fibre experiment with a vibroseis/shaker source; classic early DAS validation dataset (listed in awesome-das)."
+  concepts: [open-das-datasets, active-source]
+
+- id: presensea-das-datasets-list
+  title: "Public DAS datasets - curated list (presensea blog post 003)"
+  url: "https://presensea.github.io/blog/003-DAS-datasets.html"
+  kind: dataset
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Index of 23 public DAS datasets (submarine and land) with links and access notes, current to Jan 2026. Use as the master list when writing a downloader."
+  concepts: [open-das-datasets, dataset-index]
+
+- id: awesome-das
+  title: "awesome-das (DAS-RCN curated list of DAS software and data)"
+  url: "https://github.com/DAS-RCN/awesome-das"
+  kind: code
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Curated links to DAS processing libraries (distpy, lightguide, mldas, jDAS), visualisation (Snuffler), modelling, and data repositories (PoroTomo, FORGE, Garner Valley, PubDAS, Monterey Bay)."
+  concepts: [das-software, open-das-datasets]
+
+# ---------------------------------------------------------------- Code
+- id: dascore
+  title: "DASCore - a Python library for distributed fiber optic sensing (DASDAE)"
+  url: "https://dascore.org"
+  kind: code
+  topic: leak
+  free: true
+  license: "LGPL"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Reads many DAS formats into Patch/Spool objects with chained processing (decimate, detrend, pass_filter) and one-line waterfall plots; includes built-in example data. Recommended default library for V1."
+  concepts: [das-software, waterfall-plot, filtering, data-formats]
+
+- id: dascore-fk-recipe
+  title: "DASCore recipe: F-K Transform and Filtering"
+  url: "https://dascore.org/recipes/fk.html"
+  kind: tutorial
+  topic: leak
+  free: true
+  license: "LGPL (project)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Step-by-step: taper, low-pass, 2-D DFT to f-k, then slope_filter by apparent velocity (including directional up/down separation) on an example event."
+  concepts: [fk-filtering, apparent-velocity, slope-filter, das-software]
+
+- id: dascore-seismica-paper
+  title: "DASCore: a Python Library for Distributed Fiber Optic Sensing (Chambers et al., Seismica 2024)"
+  url: "https://seismica.library.mcgill.ca/article/view/1184"
+  kind: paper
+  topic: leak
+  free: true
+  license: "CC-BY 4.0 (Seismica)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Journal paper describing DASCore's design (Patch, Spool, IO plugins)."
+  concepts: [das-software]
+
+- id: daspy
+  title: "DASPy - Python toolbox for DAS seismology (USTC)"
+  url: "https://github.com/HMZ-03/DASPy"
+  kind: code
+  topic: leak
+  free: true
+  license: "MIT"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Filtering, spectra, visualisation plus DAS-specific denoising, wavefield decomposition, channel quality checks and strain-to-velocity conversion; pip package DASPy-toolbox; paper Hu & Li, SRL 2024."
+  concepts: [das-software, denoising, strain-to-velocity, channel-quality]
+
+- id: daspy-tutorial
+  title: "DASPy tutorial (English)"
+  url: "https://daspy-tutorial.readthedocs.io/en/latest/"
+  kind: tutorial
+  topic: leak
+  free: true
+  license: "MIT (project)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Official worked tutorial for DASPy (link from the repository README)."
+  concepts: [das-software, denoising]
+
+- id: xdas
+  title: "Xdas: a Python Framework for Distributed Acoustic Sensing"
+  url: "https://xdas.readthedocs.io/en/stable/"
+  kind: code
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Xarray/Dask-style labelled arrays for multi-file, larger-than-memory DAS processing with multithreaded signal routines."
+  concepts: [das-software, larger-than-memory, xarray]
+
+- id: lightguide
+  title: "lightguide - DAS handling, filtering and modelling on Pyrocko"
+  url: "https://pyrocko.github.io/lightguide"
+  kind: code
+  topic: leak
+  free: true
+  license: "GPL-3.0 (repository metadata)"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Adds an adaptive frequency-wavenumber (AFK) filter for suppressing incoherent noise, plus highpass and MiniSEED/iDAS/OptoDAS reading via Pyrocko."
+  concepts: [das-software, afk-filter, denoising]
+
+- id: jdas
+  title: "jDAS - self-supervised deep learning denoising of DAS data"
+  url: "https://github.com/martijnende/jDAS"
+  kind: code
+  topic: leak
+  free: true
+  license: "MIT"
+  size: null
+  level: advanced
+  verified: true
+  summary: "Predicts each channel from its neighbours (Noise2Self idea) so coherent signals survive and incoherent noise is removed, with no clean labels needed; TensorFlow, notebooks included."
+  concepts: [denoising, self-supervised, deep-learning]
+
+- id: das-n2n
+  title: "DAS-N2N: ML DAS signal denoising without clean data (Lapins et al., GJI 2024) - paper and code"
+  url: "https://arxiv.org/abs/2304.08120v1"
+  kind: paper
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: advanced
+  verified: false
+  summary: "Trains a small network on two fibres in the same cable (two noisy copies of the same signal); 47k parameters, denoises 30 s x 985 channels in under a second. Code: github.com/sachalapins/DAS-N2N."
+  concepts: [denoising, self-supervised, noise2noise]
+
+- id: das4whales-tutorial
+  title: "DAS4Whales tutorial (OOI data: band-pass, f-k fan filter, f-x plots, spectrograms)"
+  url: "https://das4whales.readthedocs.io/en/latest/_sources/src/tutorial.md.txt"
+  kind: notebook
+  topic: leak
+  free: true
+  license: "unknown"
+  size: "~850 MB example file"
+  level: intermediate
+  verified: true
+  summary: "End-to-end worked example on a real 66 km cable: read metadata, select channels, Butterworth band-pass, f-k fan filter 1400-3500 m/s, f-x and spectrogram plots to isolate a 20 Hz narrow-band call - closely analogous to isolating a leak tone."
+  concepts: [fk-filtering, spectrogram, narrow-band-signals, f-x-plot, bandpass-filter]
+
+- id: intro-to-das-data
+  title: "IntroToDASData (DAS-RCN 2020 workshop notebooks)"
+  url: "https://github.com/DAS-RCN/IntroToDASData"
+  kind: notebook
+  topic: leak
+  free: true
+  license: "MIT"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Friendly Jupyter introduction to reading and plotting DAS data from Brady Hot Springs (PoroTomo) and FORGE."
+  concepts: [das-basics, data-formats, waterfall-plot]
+
+# ---------------------------------------------------------------- Courses / videos
+- id: das-rcn-resources
+  title: "DAS Research Coordination Network - workshops, tutorials, webinars (EarthScope/IRIS)"
+  url: "https://www.iris.edu/hq/initiatives/das_rcn"
+  kind: course
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Hub page linking the 2020 DAS workshop and tutorial videos, a 2-hour ROSES DAS lesson, ML-for-DAS and data-wrangling webinars, GitHub code and the RCN final report. Closest thing to a free DAS course."
+  concepts: [das-basics, course-hub, videos]
+
+- id: das-rcn-2020-playlist
+  title: "2020 DAS Workshop and Tutorial (YouTube playlist, 21 videos)"
+  url: "https://www.youtube.com/playlist?list=PLvd8fqCFf8CVDFC9IEVAf0UuVXaBZRBPI"
+  kind: video
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: false
+  summary: "Recorded lectures and hands-on tutorial sessions from the 2020 virtual DAS workshop."
+  concepts: [das-basics, videos]
+
+- id: martin-roses-das-lesson
+  title: "ROSES 2021 DAS lesson with Eileen R. Martin (2-hour video)"
+  url: "https://www.youtube.com/watch?v=psv1bgy5LUg"
+  kind: video
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: beginner
+  verified: false
+  summary: "Two-hour lecture plus coding lesson on DAS data for early-career seismologists (linked from the DAS RCN page)."
+  concepts: [das-basics, videos, waterfall-plot]
+
+- id: das-rcn-ml-webinar
+  title: "Machine Learning for DAS Data Analysis (DAS RCN webinar 2021)"
+  url: "https://youtu.be/Ue9x6KE25rs"
+  kind: video
+  topic: leak
+  free: true
+  license: "unknown"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Webinar on applying ML to DAS data (linked from the DAS RCN page)."
+  concepts: [event-classification, deep-learning, videos]
+
+# ---------------------------------------------------------------- Shared signal processing
+- id: think-dsp
+  title: "Think DSP: Digital Signal Processing in Python (Allen Downey)"
+  url: "https://greenteapress.com/wp/think-dsp/"
+  kind: textbook
+  topic: shared
+  free: true
+  license: "CC-BY-NC 3.0"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Free Python-first DSP book: signals, harmonics, spectra, noise, spectrograms (chapter 3), filtering and convolution, with notebooks on GitHub."
+  concepts: [fft, spectrogram, filtering, noise, sampling]
+
+- id: scipy-spectrogram
+  title: "scipy.signal.spectrogram documentation"
+  url: "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.spectrogram.html"
+  kind: code
+  topic: shared
+  free: true
+  license: "BSD-3-Clause (SciPy)"
+  size: null
+  level: beginner
+  verified: true
+  summary: "Reference for the function V1 will use to build per-channel spectrograms (segment length, overlap, window, scaling)."
+  concepts: [spectrogram, stft]
+
+- id: pestoseis-fk-tutorial
+  title: "PestoSeis Tutorial 08 - Processing seismic data II (f-k filtering notebook)"
+  url: "https://inverseproblem.github.io/PestoSeis/notebooks/Tutorial%2008%20-%20Processing%20seismic%20data%20II.html"
+  kind: notebook
+  topic: shared
+  free: true
+  license: "unknown"
+  size: null
+  level: intermediate
+  verified: true
+  summary: "Educational notebook: transform a shot gather to f-k, mask the slow ground-roll fan, transform back. Same mechanics as removing slow traffic from a DAS waterfall."
+  concepts: [fk-filtering, apparent-velocity, ground-roll]
+
+- id: seg-wiki-fk
+  title: "Frequency-wavenumber filtering (SEG Wiki, from Yilmaz 'Seismic Data Analysis')"
+  url: "https://wiki.seg.org/wiki/Frequency-wavenumber_filtering"
+  kind: lecture-notes
+  topic: shared
+  free: true
+  license: "CC-BY-SA (SEG Wiki)"
+  size: null
+  level: intermediate
+  verified: false
+  summary: "Classic explanation of f-k (dip) filtering, smooth filter edges and spatial aliasing. Fetch blocked (403)."
+  concepts: [fk-filtering, spatial-aliasing]

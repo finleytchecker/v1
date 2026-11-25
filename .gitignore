@@ -7,3 +7,4 @@ data/synthetic/*
 data/real/*
 !data/real/.gitkeep
 .pytest_cache/
+dashboard/site/

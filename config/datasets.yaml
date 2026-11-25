@@ -1,0 +1,426 @@
+# Real public data pieces. Sizes checked before download; > 5 GB needs the owner's OK.
+- id: force2020-well-logs
+  dataset: force-2020
+  module: fluid
+  title: "FORCE 2020 well logs, 118 Norwegian North Sea wells (LAS)"
+  url: "https://zenodo.org/api/records/4351156/files/LAS_files_Force_2020_all_wells_train_test_blind_hidden_final.zip/content"
+  method: http
+  size_bytes: 169785172
+  size_source: zenodo-api
+  license: "CC-BY-4.0"
+  labels: "Lithology per depth sample (interpreter labels); logs DTC/DTS/RHOB/NPHI/RDEP for fluid indicators. Warm-up for Fluid."
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "Lithology labels, not fluid labels. Good real warm-up; fluid labels need Volve CPI logs."
+
+# ---------------------------------------------------------------------------
+# Utah FORGE DAS (April 2024 stimulation of well 16A(78)-32, fibres in 16B(78)-32 and 78B-32).
+# Bucket: public S3 gdr-data-lake (anonymous, no login). Checked 2026-11-25 from this container.
+# FORGE/DAS/ total = 128,653 objects, 36,999,522,700,848 bytes (~37 TB) -- all Neubrex continuous 12 s SEG-Y.
+# GDR1824 FOGMORE triggered events = 47,778 objects, 1,421,091,482,640 bytes (~1.4 TB).
+# Labels: GDR 1744 DAS event catalogs map 1:1 to GDR1824 trigger files (FileID == timestamp in file name).
+# All SEG-Y headers say time reference UTC.
+# ---------------------------------------------------------------------------
+- id: forge-das-fogmore-event-78b-sample-1
+  dataset: utah-forge-das
+  module: leak
+  title: "FOGMORE triggered DAS microseismic event record, well 78B (Silixa iDAS v2), stage 16A-10, 2024-04-07 03:00:12.243 UTC"
+  url: "https://gdr-data-lake.s3.amazonaws.com/FORGE/2024_04_stimulation/GDR1824_FOGMORE_triggered_DAS_events/16A_10/78B/v1.0.0/SILIXA_iDAS19093_20240407030012.243.sgy"
+  method: http
+  size_bytes: 16454160
+  size_source: head
+  license: "CC-BY-4.0 (GDR submission 1824)"
+  labels: "Event record. Catalog row FileID _20240407030012.243: relative origin time 1.452 s, Confidence Index 108, Mw_P 0.45, 1027 P / 1781 S channels. Label window around t0 = file start + 1.452 s as 'event'; early pre-P samples can serve as 'noise'."
+  label_url: "https://gdr.openei.org/files/1744/FOGMORE_DAS_Stimulation2024_eventCatalogue_stg16A_10.csv"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "SEG-Y rev1, IEEE float32, 1 kHz (text header: original file 78B-32_1kHz_cont_UTC_...h5). Smallest labeled DAS piece found. Channel coords: ChnlCoord78B.csv on GDR 1824 (submission still 'in curation'; file link not exposed yet)."
+
+- id: forge-das-fogmore-event-16b-sample-1
+  dataset: utah-forge-das
+  module: leak
+  title: "FOGMORE triggered DAS event record, well 16B(78)-32 (Silixa Carina), same event as sample-1"
+  url: "https://gdr-data-lake.s3.amazonaws.com/FORGE/2024_04_stimulation/GDR1824_FOGMORE_triggered_DAS_events/16A_10/16B/v1.0.0/SILIXA_Carina22002_20240407030012.243.sgy"
+  method: http
+  size_bytes: 43088400
+  size_source: head
+  license: "CC-BY-4.0 (GDR submission 1824)"
+  labels: "Same catalog row as forge-das-fogmore-event-78b-sample-1 (origin = file start + 1.452 s, CI 108). Gives a two-fibre view of one labeled event."
+  label_url: "https://gdr.openei.org/files/1744/FOGMORE_DAS_Stimulation2024_eventCatalogue_stg16A_10.csv"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "16B Carina files are 43 MB each; 78B iDAS files 16.5 MB each."
+
+- id: forge-das-fogmore-16a10-78b-hour08
+  dataset: utah-forge-das
+  module: leak
+  title: "All 89 FOGMORE 78B event records from 2024-04-07 08:00-08:20 UTC (stage 16A-10)"
+  url: "https://gdr-data-lake.s3.amazonaws.com/FORGE/2024_04_stimulation/GDR1824_FOGMORE_triggered_DAS_events/16A_10/78B/v1.0.0/SILIXA_iDAS19093_2024040708"
+  method: s3-public
+  size_bytes: 1464420240
+  size_source: s3-list
+  license: "CC-BY-4.0 (GDR submission 1824)"
+  labels: "89 files = 89 catalog rows (checked: all 2065 stage-16A-10 catalog FileIDs match the 2065 78B files). Per-event location, origin time, Confidence Index, Mw. Use CI > 65 and >=100 channels as 'high-confidence' per README; low-CI rows as weak/uncertain."
+  label_url: "https://gdr.openei.org/files/1744/FOGMORE_DAS_Stimulation2024_eventCatalogue_stg16A_10.csv"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "S3 key prefix (not a folder): list with list-type=2&prefix=<this path after the bucket>. Every file is a trigger, so there are no 'no-event' files here; take no-event windows from pre-arrival samples or from the continuous Neubrex data."
+
+- id: forge-das-catalog-fogmore-16a10
+  dataset: utah-forge-das
+  module: leak
+  title: "GDR 1744 FOGMORE DAS microseismic event catalog, stage 16A-10 (2065 events)"
+  url: "https://gdr.openei.org/files/1744/FOGMORE_DAS_Stimulation2024_eventCatalogue_stg16A_10.csv"
+  method: http
+  size_bytes: 213272
+  size_source: head
+  license: "CC-BY-4.0 (GDR)"
+  labels: "Columns: FileID, Northing, Easting, Depth, uncertainty ellipsoid, relative ot (s), Confidence Index, SNR P/S, Nchannels P/S, Mw P/S. Absolute origin = FileID timestamp + relative ot."
+  label_url: "https://gdr.openei.org/files/1744/Header_Description.txt"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "Other stages, same URL pattern stg16A_{3R,4,5,6,7,8,9}.csv, sizes (HEAD) 183407, 201514, 235662, 357469, 421113, 331174, 522201 bytes. README: https://gdr.openei.org/files/1744/README.StimulationCatalog_2024.txt (2389 B). Velocity model Calibrated_3DvelocityModel.csv 7083293 B. Catalog spans 2024-04-02/03 .. 04-07 (stages 16A-3R..16A-10)."
+
+- id: forge-das-catalog-phasepick-1817
+  dataset: utah-forge-das
+  module: leak
+  title: "GDR 1817 phase-picking (PhaseNet) microseismic catalog, April 2024 stimulation, geophones + 16B DAS"
+  url: "https://gdr.openei.org/files/1817/Utah_FORGE_2024_Auto_Pick_catalog_2026.1.23.csv"
+  method: http
+  size_bytes: 681448
+  size_source: head
+  license: "CC-BY-4.0 (GDR)"
+  labels: "2948 events with absolute UTC time, lon/lat/depth, magnitude, adloc_score, num_picks. Span 2024-04-03 18:56 to 2024-04-17 05:08 UTC -> overlaps continuous Neubrex DAS (2024-04-01 23:29 to 04-19 20:22). Mark 12 s Neubrex files containing an event time as 'event', files far from any event as 'no-event (uncatalogued)'."
+  label_url: "https://gdr.openei.org/submissions/1817"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "Third catalog: GDR 1765 source-imaging DAS catalog, file 'FORGE_locations Tau 20250821.csv' (143782 B, https://gdr.openei.org/files/1765/FORGE_locations%20Tau%2020250821.csv). Surface-network catalog: Zenodo 12817881 (not size-checked)."
+
+- id: forge-das-neubrex-continuous-event-1
+  dataset: utah-forge-das
+  module: leak
+  title: "Neubrex continuous DAS, well 16B, 12 s file 2024-04-07 03:00:04 UTC (contains catalogued event at 03:00:13.695)"
+  url: "https://gdr-data-lake.s3.amazonaws.com/FORGE/DAS/april_2024/Neubrex/16b_triggered/v1.0.0/240407/dassei-115128-20240407T030004.sgy"
+  method: http
+  size_bytes: 287594640
+  size_source: head
+  license: "CC-BY-4.0 (GDR; Neubrex 16B dataset)"
+  labels: "Event: GDR 1744 16A-10 row _20240407030012.243 (+1.452 s -> 03:00:13.695 UTC, CI 108) falls ~9.7 s into this file. Next files dassei-115129/115130 continue the stream."
+  label_url: "https://gdr.openei.org/files/1744/FOGMORE_DAS_Stimulation2024_eventCatalogue_stg16A_10.csv"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "Text header: 'Time reference is UTC', little-endian ('<') IEEE float32 SEG-Y (non-standard byte order; use segyio with endian='little' or obspy with byteorder '<'). All FORGE/DAS files are 287,594,640 B / 12 s; ~7200 files/day."
+
+- id: forge-das-neubrex-continuous-prestim-1
+  dataset: utah-forge-das
+  module: leak
+  title: "Neubrex continuous DAS, well 16B, first file 2024-04-01 23:29:49 UTC (before any catalogued stage)"
+  url: "https://gdr-data-lake.s3.amazonaws.com/FORGE/DAS/april_2024/Neubrex/16b_triggered/v1.0.0/240401/dassei-000001-20240401T232949.sgy"
+  method: http
+  size_bytes: 287594640
+  size_source: head
+  license: "CC-BY-4.0 (GDR)"
+  labels: "'No-event' candidate: earlier than every catalog (first FOGMORE trigger 2024-04-02 17:51 UTC, PhaseNet catalog starts 04-03). Means 'no catalogued event', not proof of silence."
+  label_url: "https://gdr.openei.org/files/1817/Utah_FORGE_2024_Auto_Pick_catalog_2026.1.23.csv"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "Pair with forge-das-neubrex-continuous-event-1 for a first event / no-event test (575 MB together)."
+
+- id: forge-das-neubrex-all
+  dataset: utah-forge-das
+  module: leak
+  title: "All Neubrex continuous DAS, well 16B, 2024-04-01..04-19 (128,652 SEG-Y files)"
+  url: "https://gdr-data-lake.s3.amazonaws.com/FORGE/DAS/april_2024/"
+  method: s3-public
+  size_bytes: 36999522700848
+  size_source: s3-list
+  license: "CC-BY-4.0 (GDR)"
+  labels: "Label by time against GDR 1817 / 1744 catalogs."
+  label_url: "https://gdr.openei.org/files/1817/Utah_FORGE_2024_Auto_Pick_catalog_2026.1.23.csv"
+  needs_login: false
+  verified: true
+  priority: 3
+  notes: "~37 TB. Never bulk-download; owner must approve anything > 5 GB. One day folder (e.g. .../v1.0.0/240407/) = 7200 files = 2.07 TB. Related: GDR1680 Neubrex continuous .h5 (FORGE/2024_04_stimulation/GDR1680_Neubrex_continuous_DAS_16B/v1.0.0/, 718 MB files, start 2024-04-21, after the stimulation catalogs) -- not sized in full."
+
+- id: forge-das-fogmore-all
+  dataset: utah-forge-das
+  module: leak
+  title: "All FOGMORE triggered DAS event records, stages 16A-3R..16A-10, wells 16B and 78B"
+  url: "https://gdr-data-lake.s3.amazonaws.com/FORGE/2024_04_stimulation/GDR1824_FOGMORE_triggered_DAS_events/"
+  method: s3-public
+  size_bytes: 1421091482640
+  size_source: s3-list
+  license: "CC-BY-4.0 (GDR submission 1824)"
+  labels: "Every file = one catalogued event in GDR 1744 (per-stage CSVs)."
+  label_url: "https://gdr.openei.org/submissions/1744"
+  needs_login: false
+  verified: true
+  priority: 3
+  notes: "~1.42 TB. Per stage/fibre (GB): 16A-3R 76.5/30.8, 16A-4 83.8/32.0, 16A-5 97.9/37.4, 16A-6 149.3/57.0, 16A-7 175.5/67.0, 16A-8 137.9/52.7, 16A-9 217.3/83.0, 16A-10 89.0/34.0 (16B/78B). Smallest whole stage = 16A-3R/78B 30.8 GB -> needs owner OK."
+
+# ---------------------------------------------------------------------------
+# Equinor Volve. Official route = Databricks Marketplace (provider Equinor ASA); needs a Databricks
+# login (free sign-up with university/company account), then the share appears in your catalog.
+# Not scriptable from here without a Databricks workspace + token. Old Azure blob is gone.
+# Public mirrors below are copies of Equinor's 05.PETROPHYSICAL INTERPRETATION files (SPWLA 2021 PDDA set).
+# ---------------------------------------------------------------------------
+- id: volve-official-databricks
+  dataset: volve
+  module: fluid
+  title: "Equinor Volve full data village (~40,000 files) via Databricks Marketplace"
+  url: "https://marketplace.databricks.com/provider/006d1a44-e5d8-4d20-8bd7-e9a311106007/Equinor-ASA"
+  method: manual-login
+  size_bytes: null
+  size_source: estimate
+  license: "Equinor Open Data Licence (replaced CC BY-NC-SA in Sept 2020)"
+  labels: "Petrophysical interpretation (CPI) logs PHIF/SW/VSH/KLOGH per well; also production data."
+  label_url: "https://equinoropendata.blob.core.windows.net/userguides/Equinor%20open%20data%20-%20User%20Guide.pdf"
+  needs_login: true
+  verified: false
+  priority: 3
+  notes: "User guide (822 KB PDF, fetched) says: Get Access -> log in / sign up -> data appears in Catalog within ~1 h. Total size not published on the page (2018 reports said several TB). Help: fg_DataTrawlers@equinor.com."
+
+- id: volve-cpi-f12-output
+  dataset: volve
+  module: fluid
+  title: "Volve 15/9-F-12 petrophysical interpretation output (PHIF, SW, VSH, BVW, KLOGH), LAS"
+  url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F12/WLC_PETRO_COMPUTED_OUTPUT_1.LAS"
+  method: http
+  size_bytes: 177209
+  size_source: head
+  license: "Equinor Open Data Licence (data); mirror repo has no licence file"
+  labels: "Interpreter answers per depth (0.1524 m): SW (water saturation), PHIF (effective porosity), VSH (shale volume), 3102-3506 m MD. Fluid label e.g. hydrocarbon if SW < 0.5 and PHIF > 0.1 (threshold is our choice)."
+  label_url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F12/WLC_PETRO_COMPUTED_OUTPUT_1.LAS"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "Inspected: STATOILHYDRO, WELL 15/9-F-12, FLD VOLVE. Pair with volve-cpi-f12-input. Same file mirrored at Joell2001/Petrofisica Data/VOLVE-PETROPHYSICAL_INTERPRETATION/15_9-F-12/ (identical size)."
+
+- id: volve-cpi-f12-input
+  dataset: volve
+  module: fluid
+  title: "Volve 15/9-F-12 petrophysical input logs (GR, RHOB, NPHI, DT, RT, RD, RS, flags), LAS"
+  url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F12/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+  method: http
+  size_bytes: 3421514
+  size_source: head
+  license: "Equinor Open Data Licence"
+  labels: "Features for the labels in volve-cpi-f12-output; also SAND/CARB/COAL flags."
+  label_url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F12/WLC_PETRO_COMPUTED_OUTPUT_1.LAS"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "Curves checked in header."
+
+- id: volve-cpi-f11a-output
+  dataset: volve
+  module: fluid
+  title: "Volve 15/9-F-11 A interpretation output (PHIF, SW, VSH), LAS"
+  url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F11A/WLC_PETRO_COMPUTED_OUTPUT_1.LAS"
+  method: http
+  size_bytes: 187970
+  size_source: head
+  license: "Equinor Open Data Licence"
+  labels: "SW/PHIF/VSH per depth (interpreter answers)."
+  label_url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F11A/WLC_PETRO_COMPUTED_OUTPUT_1.LAS"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "Input logs: .../15_9-F11A/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+
+- id: volve-cpi-f11a-input
+  dataset: volve
+  module: fluid
+  title: "Volve 15/9-F-11 A input logs, LAS"
+  url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F11A/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+  method: http
+  size_bytes: 8652010
+  size_source: head
+  license: "Equinor Open Data Licence"
+  labels: "Features for volve-cpi-f11a-output."
+  label_url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F11A/WLC_PETRO_COMPUTED_OUTPUT_1.LAS"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: ""
+
+- id: volve-cpi-f11t2-output
+  dataset: volve
+  module: fluid
+  title: "Volve 15/9-F-11 T2 interpretation output (PHIF, SW, VSH), LAS"
+  url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F11%20T2/WLC_PETRO_COMPUTED_OUTPUT_1.LAS"
+  method: http
+  size_bytes: 227638
+  size_source: head
+  license: "Equinor Open Data Licence"
+  labels: "SW/PHIF/VSH per depth (interpreter answers)."
+  label_url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F11%20T2/WLC_PETRO_COMPUTED_OUTPUT_1.LAS"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "Path contains a space (URL-encoded %20)."
+
+- id: volve-cpi-f11t2-input
+  dataset: volve
+  module: fluid
+  title: "Volve 15/9-F-11 T2 input logs, LAS"
+  url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F11%20T2/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+  method: http
+  size_bytes: 10587396
+  size_source: head
+  license: "Equinor Open Data Licence"
+  labels: "Features for volve-cpi-f11t2-output."
+  label_url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F11%20T2/WLC_PETRO_COMPUTED_OUTPUT_1.LAS"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: ""
+
+- id: volve-f11-input-blind
+  dataset: volve
+  module: fluid
+  title: "Volve 15/9-F-11 input logs only (SPWLA 2021 blind well, no output in mirror)"
+  url: "https://raw.githubusercontent.com/andymcdgeo/spwla_volve/main/15_9-F-11/WLC_PETRO_COMPUTED_INPUT_1.LAS"
+  method: http
+  size_bytes: 194686
+  size_source: head
+  license: "Equinor Open Data Licence"
+  labels: "None in this mirror (blind). Use for inference only; labels only via official Volve data."
+  label_url: ""
+  needs_login: false
+  verified: true
+  priority: 2
+  notes: "More wells (F-1 B, F-10, F-15 B, ...) exist as JSON in geosoft-as/jsonwelllogformat data/Volve/Well_logs/05.PETROPHYSICAL INTERPRETATION/ (e.g. 15_9-F-11/WLC_PETRO_COMPUTED_INPUT_1.json 133953 B; repo code Apache-2.0, data still Equinor licence)."
+
+# ---------------------------------------------------------------------------
+# F3 Netherlands
+# ---------------------------------------------------------------------------
+- id: f3-facies-benchmark-data
+  dataset: f3
+  module: fluid
+  title: "F3 facies classification benchmark (Alaudah et al. 2019), train/test seismic + facies labels (.npy)"
+  url: "https://zenodo.org/api/records/3755060/files/data.zip/content"
+  method: http
+  size_bytes: 1051449986
+  size_source: head
+  license: "MIT (Zenodo record 3755060); underlying F3 seismic from dGB/TNO"
+  labels: "Per-voxel facies labels, 6 classes (Upper/Middle/Lower North Sea, Chalk, Scruff, Zechstein) for train and two test volumes. Lithostratigraphic, not fluid labels."
+  label_url: "https://github.com/yalaudah/facies_classification_benchmark"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "Best small labeled F3 piece. Does not cover the shallow gas zone as a separate class."
+
+- id: f3-facies-benchmark-raw
+  dataset: f3
+  module: fluid
+  title: "F3 facies benchmark raw extras: fault planes, raw horizons, unsplit volumes"
+  url: "https://zenodo.org/api/records/3755060/files/raw.zip/content"
+  method: http
+  size_bytes: 1084578002
+  size_source: head
+  license: "MIT (Zenodo 3755060)"
+  labels: "Interpreted horizons and fault planes (structural answers)."
+  label_url: "https://zenodo.org/records/3755060"
+  needs_login: false
+  verified: true
+  priority: 2
+  notes: ""
+
+- id: f3-facies-benchmark-wellinfo
+  dataset: f3
+  module: fluid
+  title: "F3 well heads, formation tops and deviations (benchmark logs.zip)"
+  url: "https://zenodo.org/api/records/3755060/files/logs.zip/content"
+  method: http
+  size_bytes: 112229
+  size_source: head
+  license: "MIT (Zenodo 3755060)"
+  labels: "Formation tops per well (depth answers). Despite the name, contains NO log curves."
+  label_url: "https://zenodo.org/records/3755060"
+  needs_login: false
+  verified: true
+  priority: 2
+  notes: "Downloaded and listed: Well_heads/, Well topsy/*.txt, Deviations/*.txt for ~25 F02/F03/F06 wells."
+
+- id: f3-demo-2023
+  dataset: f3
+  module: fluid
+  title: "dGB F3 Demo 2023 OpendTect project (3D/2D seismic, 8 horizons, 4 wells with logs)"
+  url: "https://terranubis.com/download/F3_Demo_2023.zip/2"
+  method: manual-login
+  size_bytes: 4500000000
+  size_source: page
+  license: "CC BY-SA 3.0 (TerraNubis page; credit dGB Earth Sciences)"
+  labels: "Well logs F02-1, F03-2, F03-4, F06-1: density, sonic, GR, porosity, P-impedance, Vp/Vs, Litholog. Litholog = interpreter lithology labels. Shallow gas: classic bright spots in the shallow Plio-Pleistocene deltaic section (roughly 400-700 ms TWT, approximate; verify on the data); no well fluid labels there -- label as hand-drawn amplitude polygons / ChimneyCube attribute (weak labels)."
+  label_url: "https://terranubis.com/datainfo/F3-Demo-2023"
+  needs_login: false
+  verified: false
+  priority: 2
+  notes: "Page: 4.5 GB zipped, 7.6 GB unzipped (not the 1.7 GB / CC BY 4.0 earlier noted; old 'F3 Block Complete' page now redirects here). Link 302s to a Citrix ShareFile page (dgbearthsciences.sharefile.com/d-sfa1c428d20e84982928fb1aa763ab76e) -> needs a browser, not script-friendly. Logs are inside an OpendTect project (export to LAS in OpendTect). Official raw well logs: NLOG (nlog.nl), free, manual."
+
+# ---------------------------------------------------------------------------
+# PubDAS (Spica et al. 2023, SRL 94(2A), doi 10.1785/0220220279). Univ. Michigan Locker via Globus.
+# Endpoint origin_id 706e304c-5def-11ec-9b5c-f9dfb1abb183. Paper: "All users need a Globus account".
+# Anonymous Globus API call from here -> AuthenticationFailed. No HTTPS mirror found. ~90 TB total.
+# No packaged labels/event catalogs; use USGS ComCat (https://earthquake.usgs.gov/fdsnws/event/1/) by time.
+# ---------------------------------------------------------------------------
+- id: pubdas-lafarge
+  dataset: pubdas
+  module: leak
+  title: "PubDAS LaFarge mine (Silixa iDAS, 2 days, SEG-Y, 1 kHz) -- smallest PubDAS set"
+  url: "https://app.globus.org/file-manager?origin_id=706e304c-5def-11ec-9b5c-f9dfb1abb183&origin_path=%2F"
+  method: globus
+  size_bytes: 45000000000
+  size_source: page
+  license: "Per-dataset licence file in each PubDAS folder (not checked)"
+  labels: "No labels shipped. Contains active sources / mine blasting and truck/conveyor noise; label from field logs if provided in folder README."
+  label_url: ""
+  needs_login: true
+  verified: false
+  priority: 3
+  notes: "45 GB per paper Table 1 -> owner OK needed even for full set; Globus lets you pick single files. Scripting needs globus-sdk + Globus account + Globus Connect Personal endpoint in this container."
+
+- id: pubdas-stanford3
+  dataset: pubdas
+  module: leak
+  title: "PubDAS Stanford-3 (OptaSense ODH4, 6 days, SEG-Y)"
+  url: "https://app.globus.org/file-manager?origin_id=706e304c-5def-11ec-9b5c-f9dfb1abb183&origin_path=%2F"
+  method: globus
+  size_bytes: 92000000000
+  size_source: page
+  license: "Per-dataset licence file (not checked)"
+  labels: "None shipped. Label local earthquakes by time with USGS ComCat / NCEDC; urban traffic noise as background."
+  label_url: "https://earthquake.usgs.gov/fdsnws/event/1/"
+  needs_login: true
+  verified: false
+  priority: 3
+  notes: "Other PubDAS sets (GB, Table 1): Fairbanks 10441, FORESEE 29338, FOSSA 11680, Stanford-1 18908, Stanford-2 2887, Valencia 3213."
+
+# ---------------------------------------------------------------------------
+# Leak data. Honest status: no public, labeled DAS pipeline-leak or pipeline-flow dataset was found.
+# Closest real labeled leak data is non-DAS (hydrophone/accelerometer on a lab water network).
+# ---------------------------------------------------------------------------
+- id: leak-waterpipe-hydrophone-mendeley
+  dataset: other
+  module: leak
+  title: "Leak simulations in experimental water network testbed -- hydrophone signals (Mendeley xw44wv2g88 v2)"
+  url: "https://data.mendeley.com/public-files/datasets/xw44wv2g88/files/d698e41d-e53e-4242-92e0-27621b9cd5e8/file_downloaded"
+  method: http
+  size_bytes: 63994754
+  size_source: head
+  license: "CC-BY-4.0"
+  labels: "Labeled leak type (4 induced leak types) vs no-leak, plus background-flow condition, per the dataset description (how labels are encoded in the zip not yet checked); 280 signals total across sensors."
+  label_url: "https://data.mendeley.com/datasets/xw44wv2g88/2"
+  needs_login: false
+  verified: true
+  priority: 1
+  notes: "NOT DAS (hydrophone, 8 kHz .raw). Same record: Accelerometer.zip 459278311 B, Dynamic Pressure Sensor.zip 562748973 B. Use as a real labeled leak warm-up only."

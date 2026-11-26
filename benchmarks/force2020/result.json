@@ -1,0 +1,10 @@
+{
+  "score": -0.6244462619109776,
+  "accuracy": 0.761821237436366,
+  "n_samples": 122576,
+  "setting": {
+    "learning_rate": 0.05,
+    "max_leaf_nodes": 127
+  },
+  "minutes": 1.9
+}

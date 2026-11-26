@@ -27,7 +27,7 @@ COLORS = ["#ffd54f", "#c5a55a", "#4e8a3e", "#80cbc4", "#ba68c8", "#64b5f6", "#e3
 
 def v1_results():
     out = []
-    for f, label in (("result.json", "V1 (version 1)"), ("result_v2.json", "V1 (version 2)")):
+    for f, label in (("result.json", "V1 (version 1)"), ("result_v3.json", "V1 (version 3)")):
         p = BENCH / f
         if p.exists():
             r = json.loads(p.read_text())
@@ -85,7 +85,7 @@ def pic_well(save):
     """One hidden well: real answer vs the winning team vs V1."""
     hidden = COMP / "data/hidden_test.csv"
     win_dir = COMP / "final_scoring/Olawale"
-    v1p = BENCH / "hidden_predictions_v2.csv"
+    v1p = max(BENCH.glob("hidden_predictions_v*.csv"), default=BENCH / "none.csv")
     if not hidden.exists() or not win_dir.exists():
         return None
     well = "16/2-7" if (win_dir / "16_2-7.csv").exists() else sorted(p.stem for p in win_dir.glob("*.csv"))[0].replace("_", "/")
@@ -95,7 +95,7 @@ def pic_well(save):
             ("winning team", w["prediction"].astype(int).to_numpy(), True)]
     if v1p.exists():
         v = pd.read_csv(v1p)
-        v = v[v.WELL == well].set_index("DEPTH_MD").reindex(depth)
+        v = v[v.WELL == well].assign(DEPTH_MD=lambda d: d.DEPTH_MD.round(3)).set_index("DEPTH_MD").reindex(depth.round(3))
         cols.append(("V1", v["pred"].map({c: i for i, c in enumerate(CODES)}).to_numpy(), True))
     fig, axes = plt.subplots(1, len(cols), figsize=(3.2 * len(cols) + 2, 10), sharey=True)
     for ax, (title, idx, _) in zip(axes, cols):

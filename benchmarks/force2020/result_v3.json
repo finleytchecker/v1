@@ -1,0 +1,34 @@
+{
+  "version": 3,
+  "kept_fixes": [
+    "layer_names",
+    "fill_curves",
+    "penalty_decision"
+  ],
+  "ablation": {
+    "baseline": {
+      "open_score": -0.6060506923223137,
+      "open_acc": 0.768316933019461
+    },
+    "layer_names": {
+      "open_score": -0.5905657377216966,
+      "open_acc": 0.7773090813387334
+    },
+    "fill_curves": {
+      "open_score": -0.5769267322679221,
+      "open_acc": 0.7758396327109499
+    },
+    "wide_context": {
+      "open_score": -0.6109095594578392,
+      "open_acc": 0.762928954717588
+    },
+    "penalty_decision": {
+      "open_score": -0.597478908660243,
+      "open_acc": 0.7698887313029111
+    }
+  },
+  "score": -0.6097545282972622,
+  "accuracy": 0.7669550724282458,
+  "n_samples": 122397,
+  "minutes": 5.3
+}

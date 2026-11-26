@@ -1,0 +1,13 @@
+{
+  "1": {
+    "level": 1,
+    "name": "Even playing field",
+    "score": -0.5559153819129554,
+    "accuracy": 0.7725516148271608,
+    "train_wells": 108,
+    "hidden_wells": 10,
+    "hidden_samples": 122397,
+    "minutes": 1.3,
+    "beats_winner": false
+  }
+}

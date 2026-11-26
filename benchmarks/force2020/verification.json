@@ -93,6 +93,13 @@
       "rows_matched": 122397,
       "rows_total": 122397,
       "coverage": 1.0
+    },
+    "hidden_predictions_v4": {
+      "score": -0.5559,
+      "accuracy": 0.7726,
+      "rows_matched": 122397,
+      "rows_total": 122397,
+      "coverage": 1.0
     }
   }
 }

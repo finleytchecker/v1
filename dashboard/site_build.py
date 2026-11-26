@@ -380,6 +380,12 @@ def build():
     pred = well_prediction()
     add("A real well: the answer vs V1's answer", pic_well(pred),
         "Left: the real measurements down the borehole. Right: the rock type at each depth.")
+    from dashboard import pros_vs_v1 as pv
+    add("Pros vs V1: how each side works", pv.pic_workflows(save))
+    add("Pros vs V1: the scoreboard", pv.pic_leaderboard(save),
+        "FORCE 2020: real teams predicting rock type in 10 hidden North Sea wells. V1 is scored the same way.")
+    add("Pros vs V1: one hidden well", pv.pic_well(save),
+        "Each colour is a rock type, top to bottom down the well.")
     add("How it teaches itself", pic_cycle(book))
     add("Every lesson, every try", pic_learning_curves(book))
     add("Things it got wrong (the actual signals)", pic_mistakes(book))

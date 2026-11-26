@@ -38,7 +38,7 @@
     },
     "ICA": {
       "rescored": -0.4967,
-      "published": null,
+      "published": -0.4954,
       "accuracy": 0.8038,
       "rows": 122397
     },
@@ -79,5 +79,13 @@
       "rows": 122397
     }
   },
-  "v1": {}
+  "v1": {
+    "hidden_predictions_v1": {
+      "score": -0.6229,
+      "accuracy": 0.7625,
+      "rows_matched": 121368,
+      "rows_total": 122397,
+      "coverage": 0.9916
+    }
+  }
 }

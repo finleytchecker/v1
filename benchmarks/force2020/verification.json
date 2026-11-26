@@ -1,0 +1,83 @@
+{
+  "finalists": {
+    "BohdanP": {
+      "rescored": -0.5171,
+      "published": -0.5171,
+      "accuracy": 0.7844,
+      "rows": 122397
+    },
+    "CampbellH": {
+      "rescored": -0.5221,
+      "published": -0.5221,
+      "accuracy": 0.7867,
+      "rows": 122397
+    },
+    "DapoA": {
+      "rescored": -0.9443,
+      "published": -0.9441,
+      "accuracy": 0.6853,
+      "rows": 122397
+    },
+    "DavidP": {
+      "rescored": -0.5256,
+      "published": -0.5256,
+      "accuracy": 0.7858,
+      "rows": 122397
+    },
+    "GIR": {
+      "rescored": -0.4792,
+      "published": -0.4792,
+      "accuracy": 0.8034,
+      "rows": 122397
+    },
+    "H3G": {
+      "rescored": -0.5045,
+      "published": -0.5045,
+      "accuracy": 0.7962,
+      "rows": 122397
+    },
+    "ICA": {
+      "rescored": -0.4967,
+      "published": null,
+      "accuracy": 0.8038,
+      "rows": 122397
+    },
+    "ISPL": {
+      "rescored": -0.5084,
+      "published": -0.5084,
+      "accuracy": 0.7848,
+      "rows": 122397
+    },
+    "JeremyZhao": {
+      "rescored": -0.5156,
+      "published": -0.5173,
+      "accuracy": 0.7972,
+      "rows": 122397
+    },
+    "JiampiersC": {
+      "rescored": -0.5089,
+      "published": -0.5087,
+      "accuracy": 0.7979,
+      "rows": 122397
+    },
+    "JoseB": {
+      "rescored": -0.5091,
+      "published": -0.5091,
+      "accuracy": 0.8026,
+      "rows": 122397
+    },
+    "Olawale": {
+      "rescored": -0.4698,
+      "published": -0.469,
+      "accuracy": 0.8053,
+      "rows": 122397
+    },
+    "Softserve": {
+      "rescored": -0.5263,
+      "published": -0.5263,
+      "accuracy": 0.7855,
+      "rows": 122397
+    }
+  },
+  "v1": {}
+}

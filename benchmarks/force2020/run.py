@@ -69,11 +69,17 @@ def load_well(name):
     return np.hstack(feats), y
 
 
-def load_split(names, step=1):
-    X, y = [], []
+def load_split(names, step=1, with_index=False):
+    X, y, idx = [], [], []
     for n in names:
         a, b = load_well(n)
         X.append(a[::step]); y.append(b[::step])
+        if with_index:
+            d = lasio.read(well_file(n)).df()
+            d = d[d["FORCE_2020_LITHOFACIES_LITHOLOGY"].notna()]
+            idx += [(n, float(v)) for v in d["DEPTH_MD"].to_numpy()[::step]]
+    if with_index:
+        return np.vstack(X), np.concatenate(y), idx
     return np.vstack(X), np.concatenate(y)
 
 
@@ -99,8 +105,11 @@ def main(log=print):
     _, lr, leaves = best
     final = HistGradientBoostingClassifier(learning_rate=lr, max_leaf_nodes=leaves, max_iter=400, random_state=0)
     final.fit(np.vstack([Xtr, Xop]), np.concatenate([ytr, yop]))
-    Xh, yh = load_split(splits["hidden_test"])
+    Xh, yh, idx = load_split(splits["hidden_test"], with_index=True)
     ph = final.predict(Xh)
+    import pandas as pd
+    pd.DataFrame(dict(WELL=[w for w, _ in idx], DEPTH_MD=[d for _, d in idx], true=yh, pred=ph)).to_csv(
+        HERE / "hidden_predictions_v1.csv", index=False)
     result = dict(score=official_score(yh, ph, A), accuracy=float(accuracy_score(yh, ph)), n_samples=int(len(yh)),
                   setting=dict(learning_rate=lr, max_leaf_nodes=leaves), minutes=round((time.time() - t0) / 60, 1))
     (HERE / "result.json").write_text(json.dumps(result, indent=2))

@@ -57,7 +57,8 @@ def pic_progress(book, cat, dls, real):
     lessons = book.course_status()
     srcs = sum(len(yaml.safe_load(open(p)) or []) for p in (PROJECT_ROOT / "course/sources").glob("*.yaml"))
     done = sum(l["status"] == "passed" for l in lessons)
-    ok_dl = len({d["entry_id"] for d in dls if d["status"] == "done"})
+    ids = {e["id"] for e in cat}
+    ok_dl = len({d["entry_id"] for d in dls if d["status"] == "done" and d["entry_id"] in ids})
     areas = [("Research\nlibrary", 1.0, f"{srcs} sources"),
              ("Warm-up\ncourse", done / max(1, len(lessons)), f"{done}/{len(lessons)} lessons"),
              ("Real data\ndownloaded", ok_dl / max(1, len(cat)), f"{ok_dl} of {len(cat)} found so far"),
@@ -65,6 +66,7 @@ def pic_progress(book, cat, dls, real):
              ("Fluid on\nreal data", real["fluid"] or 0, f"{real['fluid']:.0%} honest" if real["fluid"] else "running" if real.get("fluid_running") else "not yet")]
     fig, axes = plt.subplots(1, 5, figsize=(15, 3.8))
     for ax, (name, frac, lab) in zip(axes, areas):
+        frac = min(1.0, max(0.0, frac))
         c = GREEN if frac >= 0.999 else (YELLOW if frac > 0 else GREY)
         ax.pie([frac, 1 - frac + 1e-9], colors=[c, "#262626"], startangle=90, counterclock=False,
                wedgeprops=dict(width=0.28))

@@ -153,6 +153,7 @@ class ForgeDAS:
             Xs.append(d["X"]); ys += list(d["y"]); gs += [hour] * len(d["y"])
             ids += [f"{f.stem}#{i}" for i in range(len(d["y"]))]
         X = np.vstack([x[:, :Xs[0].shape[1]] for x in Xs if x.shape[1] >= Xs[0].shape[1]])
+        X = np.nan_to_num(X, nan=0.0, posinf=0.0, neginf=0.0)      # gaps in a recording -> neutral values
         return dict(X=X, y=np.array(ys), groups=np.array(gs), ids=np.array(ids),
                     description="FORGE DAS: event vs no-event, labelled from the catalogue; groups = hour of recording")
 

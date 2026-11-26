@@ -9,3 +9,5 @@ data/real/*
 .pytest_cache/
 dashboard/site/
 course/site/
+data/tmp*/
+data/features/

@@ -6,3 +6,4 @@ streamlit
 pytest
 # Added in later phases: torch, obspy, devito (optional)
 requests
+markdown

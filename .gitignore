@@ -8,3 +8,4 @@ data/real/*
 !data/real/.gitkeep
 .pytest_cache/
 dashboard/site/
+course/site/

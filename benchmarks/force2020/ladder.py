@@ -77,16 +77,18 @@ def run_level(level, tr, op, hd, A, log=print):
     if level == 5:
         hd = mess_up(hd.reset_index(drop=True))
     tr, op, hd = (d.reset_index(drop=True) for d in (tr, op, hd))
+    fixes = [f for f in FIXES if not (level == 2 and f == "fill_curves")]   # nothing to fill from when curves are gone
     cats = {c: {v: i for i, v in enumerate(sorted(tr[c].dropna().unique()))} for c in ("GROUP", "FORMATION")}
-    fills = v2.fill_models(v2.base_features(tr, cats))
-    X = build(pd.concat([tr, op], ignore_index=True), FIXES, cats, fills)
+    fills = v2.fill_models(v2.base_features(tr, cats)) if "fill_curves" in fixes else {}
+    X = build(pd.concat([tr, op], ignore_index=True), fixes, cats, fills)
+    X = X.loc[:, X.notna().any()]                                       # drop curves that are entirely absent
     y = np.concatenate([tr[v2.TARGET], op[v2.TARGET]]).astype(int)
     cat = np.array([c in ("GROUP", "FORMATION") for c in X.columns])
     m = HistGradientBoostingClassifier(learning_rate=0.05, max_leaf_nodes=127, max_iter=600 if level == 1 else 400,
                                        categorical_features=cat, random_state=0)
     m.fit(X.iloc[::step], y[::step])
     yh = hd[v2.TARGET].astype(int).to_numpy()
-    pred = v2.min_penalty_decision(m.predict_proba(build(hd, FIXES, cats, fills)), m.classes_, A)
+    pred = v2.min_penalty_decision(m.predict_proba(build(hd, fixes, cats, fills)[X.columns]), m.classes_, A)
     res = dict(level=level, name=LEVELS[level], score=v2.score(yh, pred, A), accuracy=float(np.mean(pred == yh)),
                train_wells=int(tr.WELL.nunique() + op.WELL.nunique()), hidden_wells=int(hd.WELL.nunique()),
                hidden_samples=int(len(yh)), minutes=round((time.time() - t0) / 60, 1),

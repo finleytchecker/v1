@@ -384,6 +384,9 @@ def build():
     add("Pros vs V1: how each side works", pv.pic_workflows(save))
     add("Pros vs V1: the scoreboard", pv.pic_leaderboard(save),
         "FORCE 2020: real teams predicting rock type in 10 hidden North Sea wells. V1 is scored the same way.")
+    add("Challenge ladder", pv.pic_ladder(save),
+        "Level 1 is the same setup the competition teams had. Each later level makes it harder: fewer log types, "
+        "fewer training wells, a new area, messy data.")
     add("Pros vs V1: one hidden well", pv.pic_well(save),
         "Each colour is a rock type, top to bottom down the well.")
     add("How it teaches itself", pic_cycle(book))

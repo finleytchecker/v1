@@ -32,6 +32,14 @@ def v1_results():
         if p.exists():
             r = json.loads(p.read_text())
             out.append((label, r["score"], r["accuracy"]))
+    lp = BENCH / "ladder_results.json"
+    if lp.exists() and "1" in json.loads(lp.read_text()):
+        r = json.loads(lp.read_text())["1"]
+        out.append(("V1 (all data)", r["score"], r["accuracy"]))
+    pp = BENCH / "result_push_level1.json"
+    if pp.exists():
+        r = json.loads(pp.read_text())
+        out.append(("V1 (tuned blend)", r["score"], r["accuracy"]))
     return out
 
 
@@ -113,3 +121,29 @@ def pic_well(save):
     fig.suptitle(f"Hidden well {well}: nobody trained on it", fontsize=18)
     fig.tight_layout(rect=(0, 0, 0.8, 0.96))
     return save(fig, "pros_well.png")
+
+
+def pic_ladder(save):
+    """Challenge ladder: each level's accuracy and official score vs the winning team's even-field result."""
+    p = BENCH / "ladder_results.json"
+    if not p.exists():
+        return None
+    r = json.loads(p.read_text())
+    lv = sorted(r, key=int)
+    names = [f"L{k}\n{r[k]['name']}" for k in lv]
+    acc = [r[k]["accuracy"] * 100 for k in lv]
+    sc = [r[k]["score"] for k in lv]
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(15, 5.5))
+    a1.bar(names, acc, color=["#4fc3f7" if k == "1" else "#90a4ae" for k in lv])
+    a1.axhline(80.5, color="#ffd54f", lw=3, ls="--"); a1.text(len(lv) - 0.5, 81, "winner 80.5%", ha="right", color="#ffd54f")
+    for i, v in enumerate(acc):
+        a1.text(i, v + 0.8, f"{v:.1f}%", ha="center", fontsize=13)
+    a1.set_ylim(50, 88); a1.set_title("Accuracy at each level"); a1.tick_params(axis="x", labelsize=11)
+    a2.bar(names, [-s for s in sc], color=["#4fc3f7" if k == "1" else "#90a4ae" for k in lv])
+    a2.axhline(0.469, color="#ffd54f", lw=3, ls="--"); a2.text(-0.45, 0.48, "winner 0.469", ha="left", va="bottom", color="#ffd54f")
+    for i, s in enumerate(sc):
+        a2.text(i, -s + 0.015, f"{s:.3f}", ha="center", fontsize=13)
+    a2.set_title("Official mistake cost (lower = better)"); a2.set_ylim(0, max(-s for s in sc) * 1.12); a2.tick_params(axis="x", labelsize=11)
+    fig.suptitle("Challenge ladder: same rules as the teams (L1), then harder", fontsize=17)
+    fig.tight_layout()
+    return save(fig, "pros_ladder.png")

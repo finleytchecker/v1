@@ -8,7 +8,7 @@ date_utc,batch,group,organization,name,email,from,status
 2026-11-26,1,University researchers,Imperial College London,Ivan Stoianov,ivan.stoianov@imperial.ac.uk,tobiasmaxlee48@gmail.com,sent
 2026-11-26,1,University researchers,Bundesanstalt fur Materialforschung und -prufung (BAM),Pavol Stajanca,pavol.stajanca@bam.de,tobiasmaxlee48@gmail.com,sent
 2026-11-26,1,University researchers,UNSW Sydney,Francois Ladouceur,f.ladouceur@unsw.edu.au,tobiasmaxlee48@gmail.com,sent
-2026-11-26,1,University researchers,University of Technology Sydney,Lili Bykerk,lili.bykerk@uts.edu.au,tobiasmaxlee48@gmail.com,sent
+2026-11-26,1,University researchers,University of Technology Sydney,Lili Bykerk,lili.bykerk@uts.edu.au,tobiasmaxlee48@gmail.com,bounced
 2026-11-26,1,Companies,AP Sensing,,northamerica@apsensing.com,tobiasmaxlee48@gmail.com,sent
 2026-11-26,1,Companies,Hifi Engineering,,info@hifieng.com,tobiasmaxlee48@gmail.com,sent
 2026-11-26,1,Companies,Luna Innovations (owns OptaSense),,solutions@lunainc.com,tobiasmaxlee48@gmail.com,sent
@@ -31,9 +31,9 @@ date_utc,batch,group,organization,name,email,from,status
 2026-11-26,1,Utilities / pipeline operators,"Water Supplies Department, Hong Kong",,wsdinfo@wsd.gov.hk,tobiasmaxlee48@gmail.com,sent
 2026-11-27,2,Early-career,Colorado School of Mines,Ahmad Tourei,tourei@mines.edu,tobiasmaxlee48@gmail.com,sent
 2026-11-27,2,Early-career,Colorado School of Mines,Sharifah Ali,ssali@mines.edu,tobiasmaxlee48@gmail.com,sent
-2026-11-27,2,Early-career,University of Washington,Will Dienstfrey,wdiens@uw.edu,tobiasmaxlee48@gmail.com,sent
-2026-11-27,2,Early-career,University of Washington,Dominik Gräff,graeffd@uw.edu,tobiasmaxlee48@gmail.com,sent
-2026-11-27,2,Early-career,University of Washington,Manuela Köpfli,koepflma@uw.edu,tobiasmaxlee48@gmail.com,sent
+2026-11-27,2,Early-career,University of Washington,Will Dienstfrey,wdiens@uw.edu,tobiasmaxlee48@gmail.com,bounced
+2026-11-27,2,Early-career,University of Washington,Dominik Gräff,graeffd@uw.edu,tobiasmaxlee48@gmail.com,bounced
+2026-11-27,2,Early-career,University of Washington,Manuela Köpfli,koepflma@uw.edu,tobiasmaxlee48@gmail.com,bounced
 2026-11-27,2,Early-career,Stanford University,Haipeng Li,haipeng@stanford.edu,tobiasmaxlee48@gmail.com,sent
 2026-11-27,2,Early-career,Stanford University,Joseph Dalton Stitt,jdstitt@stanford.edu,tobiasmaxlee48@gmail.com,sent
 2026-11-27,2,Early-career,Stanford University,Qi Hu,qihu@stanford.edu,tobiasmaxlee48@gmail.com,sent

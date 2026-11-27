@@ -30,6 +30,7 @@ Legend: ✅ better than before · ❌ worse · ➖ no real change · ⏹ stopped
 | ➖ | ladder L3 Less teaching | only 25 training wells (+10 open test) | — / — | -0.8717 / 69.0% |  |
 | ➖ | ladder L4 New territory | learn from southern wells, tested on northern hidden wells | — / — | -0.7274 / 72.1% |  |
 | ➖ | ladder L5 Messy data | hidden-well logs get 5% noise and missing chunks | — / — | -0.7214 / 73.7% |  |
+| ✅ | v5 tuned blend | Level-1 setup (all data, layer names, filled curves, penalty-aware answers) + 12 model settings tried on the open test wells + blend of the best 3 settings x 2 seeds | -0.5631 / — | -0.4896 / 79.3% | yes |
 
 - **real-loop practice** (Nov 25 18:25 UTC): 72.5% looked fine but always guessing 'shale' gets ~61%; rare rock types mostly missed.
 - **v1** (Nov 26 18:35 UTC): 13th of 14 finalists. Winner: -0.4690 / 80.5%.
@@ -45,6 +46,7 @@ Legend: ✅ better than before · ❌ worse · ➖ no real change · ⏹ stopped
 - **ladder L3 Less teaching** (Nov 26 21:00 UTC): Weakest level: 35 -> 108 training wells is worth +8 points. More labelled wells = biggest lever.
 - **ladder L4 New territory** (Nov 26 21:00 UTC): Moving to a new area costs ~5 points.
 - **ladder L5 Messy data** (Nov 26 21:00 UTC): Copes fairly well with noise and gaps.
+- **v5 tuned blend** (Nov 27 01:27 UTC): Would rank 3rd of 14 finalists (between GIR -0.4792 and Lab.ICA -0.4954). Gap to winner: 0.0206 score, 1.2 points accuracy. Tuning + blending was worth more than all feature fixes combined.
 
 ## FORGE DAS (earthquakes)
 

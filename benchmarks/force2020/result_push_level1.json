@@ -1,0 +1,37 @@
+{
+  "score": -0.4895718440811458,
+  "accuracy": 0.7932465665008129,
+  "best_open": [
+    {
+      "params": {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 63,
+        "max_iter": 400,
+        "l2_regularization": 1.0,
+        "min_samples_leaf": 20
+      },
+      "open_score": -0.5630967350459842
+    },
+    {
+      "params": {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 63,
+        "max_iter": 1000,
+        "l2_regularization": 1.0,
+        "min_samples_leaf": 20
+      },
+      "open_score": -0.5649600470808416
+    },
+    {
+      "params": {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 255,
+        "max_iter": 1000,
+        "l2_regularization": 1.0,
+        "min_samples_leaf": 20
+      },
+      "open_score": -0.5656874607050429
+    }
+  ],
+  "minutes": 168.3
+}

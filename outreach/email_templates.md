@@ -57,3 +57,33 @@ Thanks for your time,
 Tobias Lee
 
 (If you'd rather not hear from me again, just reply and say so.)
+
+## Early-career researchers: rock physics / well logs / reservoir variant (from batch 3)
+Subject: Question about the data from your {short_topic} work
+
+Hi {first_name},
+
+I came across {relevant_work} and really liked it. I'm a young entrepreneur who has recently got into geophysics, and I'm teaching myself how well logs and seismic data reveal what's underground: which layers are sandstone, shale or limestone, and whether they hold water, oil or gas.
+
+I learn best by working through real data. Would you be open to sharing any data from that project, even a small sample, along with a note on what's in it? I'd follow any terms or credit you'd like, and I'm happy to share what I find.
+
+If it isn't possible, no problem at all, and a pointer to any public dataset you'd recommend would still help a lot.
+
+Thanks for your time,
+Tobias Lee
+
+(If you'd rather not hear from me again, just reply and say so.)
+
+## Geological surveys, regulators and data providers (from batch 3)
+Subject: Finding public well log data for someone learning geoscience
+
+Hello {organization} team,
+
+I'm a young entrepreneur in British Columbia who has recently got into geophysics, and I've been learning from {relevant_work}. I'm teaching myself to read well logs and seismic data, especially how to tell rock types and fluids apart.
+
+Could you point me to the best place to find public well logs (LAS files) that come with core descriptions or lithology picks, ideally for BC or western Canada? A pointer to the right dataset or the right person would help a lot, and I'll follow any licence terms that apply.
+
+Thank you for your time,
+Tobias Lee
+
+(If you'd rather not hear from me again, just reply and say so.)

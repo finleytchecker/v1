@@ -2,6 +2,7 @@
 
 | Date (UTC) | From | Reply | Next step |
 |---|---|---|---|
+| Nov 27 18:10 | NTNU (the.t.mai@ntnu.no), Stanford (rasool@stanford.edu) | BOUNCED: address not found (batch 3) | Do not retry |
 | Nov 27 15:59 | Evgeniia Martuganova, TU Delft | Positive: her PhD 3D DAS-VSP data (Groß Schönebeck geothermal) is public at GFZ: https://dataservices.gfz.de/10.5880/gfz.4.8.2022.014/3d-das-vsp-data-from-the-gross-schoenebeck | Add to datasets list; send a thank-you |
 | Nov 27 08:17 | Song Jiayi (now at Zhenhua Oil) | Can't share raw DAS/DTS data (commercial agreement); recommends the public HFTS-2 dataset (https://netl.doe.gov/node/1989) and the HFTS-2 overview paper (URTeC 2021-5514) | Look into HFTS-2 |
 | Nov 27 07:17 | Karl Truong, NTNU | Positive: 1-minute raw samples linked in the paper's data-availability section, plus processed data at https://doi.org/10.18710/Q8OSON (fin whale calls) | Add to datasets list; thank-you |

@@ -3,3 +3,5 @@ lili.bykerk@uts.edu.au  # bounced Nov 26
 wdiens@uw.edu  # blocked by UW server Nov 27
 graeffd@uw.edu  # blocked by UW server Nov 27
 koepflma@uw.edu  # blocked by UW server Nov 27
+the.t.mai@ntnu.no  # bounced Nov 27
+rasool@stanford.edu  # bounced Nov 27

@@ -41,3 +41,19 @@ Would anyone on your team be open to sharing sample monitoring data from a known
 
 Thank you for considering it,
 {sender_name}
+
+## Early-career researchers (grad students, postdocs, recent graduates)
+Subject: Question about the data from your {short_topic} work
+
+Hi {first_name},
+
+I came across {relevant_work} and really liked it. I'm a young entrepreneur who has recently got into geophysics, and I'm teaching myself how vibrations in the ground and in fiber-optic cables reveal things like leaks, earthquakes and fluids underground.
+
+I learn best by working through real recordings. Would you be open to sharing any data from that project, even a small sample, along with a note on what's in it? I'd follow any terms or credit you'd like, and I'm happy to share what I find.
+
+If it isn't possible, no problem at all, and a pointer to any public dataset you'd recommend would still help a lot.
+
+Thanks for your time,
+Tobias Lee
+
+(If you'd rather not hear from me again, just reply and say so.)

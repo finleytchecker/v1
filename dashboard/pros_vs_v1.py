@@ -40,6 +40,10 @@ def v1_results():
     if pp.exists():
         r = json.loads(pp.read_text())
         out.append(("V1 (tuned blend)", r["score"], r["accuracy"]))
+    p6 = BENCH / "result_v6.json"
+    if p6.exists():
+        r = json.loads(p6.read_text())
+        out.append(("V1 (v6 rebuild)", r["score"], r["accuracy"]))
     return out
 
 
@@ -93,7 +97,9 @@ def pic_well(save):
     """One hidden well: real answer vs the winning team vs V1."""
     hidden = COMP / "data/hidden_test.csv"
     win_dir = COMP / "final_scoring/Olawale"
-    v1p = max(BENCH.glob("hidden_predictions_v*.csv"), default=BENCH / "none.csv")
+    v1p = BENCH / "hidden_predictions_v5.csv"  # best verified run so far (v5 -0.4896)
+    if not v1p.exists():
+        v1p = max(BENCH.glob("hidden_predictions_v*.csv"), default=BENCH / "none.csv")
     if not hidden.exists() or not win_dir.exists():
         return None
     well = "16/2-7" if (win_dir / "16_2-7.csv").exists() else sorted(p.stem for p in win_dir.glob("*.csv"))[0].replace("_", "/")

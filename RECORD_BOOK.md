@@ -31,6 +31,11 @@ Legend: ✅ better than before · ❌ worse · ➖ no real change · ⏹ stopped
 | ➖ | ladder L4 New territory | learn from southern wells, tested on northern hidden wells | — / — | -0.7274 / 72.1% |  |
 | ➖ | ladder L5 Messy data | hidden-well logs get 5% noise and missing chunks | — / — | -0.7214 / 73.7% |  |
 | ✅ | v5 tuned blend | Level-1 setup (all data, layer names, filled curves, penalty-aware answers) + 12 model settings tried on the open test wells + blend of the best 3 settings x 2 seeds | -0.5631 / — | -0.4896 / 79.3% | yes |
+| 📍 | v6 test: rare-rock weight x1 | training weight x1 on anhydrite, limestone, chalk, halite, tuff, marl | -0.5724 / 78.0% | — / — |  |
+| ➖ | v6 test: rare-rock weight x2 | training weight x2 on anhydrite, limestone, chalk, halite, tuff, marl | -0.5731 / 77.9% | — / — |  |
+| ❌ | v6 test: rare-rock weight x4 | training weight x4 on anhydrite, limestone, chalk, halite, tuff, marl | -0.5853 / 77.4% | — / — |  |
+| ❌ | v6 test: rare-rock weight x8 | training weight x8 on anhydrite, limestone, chalk, halite, tuff, marl | -0.5899 / 77.4% | — / — |  |
+| ❌ | v6 rare-rock weighting | v5 blend + training weight x1 on rare rocks | — / — | -0.4990 / 79.1% | yes |
 
 - **real-loop practice** (Nov 25 18:25 UTC): 72.5% looked fine but always guessing 'shale' gets ~61%; rare rock types mostly missed.
 - **v1** (Nov 26 18:35 UTC): 13th of 14 finalists. Winner: -0.4690 / 80.5%.
@@ -47,6 +52,10 @@ Legend: ✅ better than before · ❌ worse · ➖ no real change · ⏹ stopped
 - **ladder L4 New territory** (Nov 26 21:00 UTC): Moving to a new area costs ~5 points.
 - **ladder L5 Messy data** (Nov 26 21:00 UTC): Copes fairly well with noise and gaps.
 - **v5 tuned blend** (Nov 27 01:27 UTC): Would rank 3rd of 14 finalists (between GIR -0.4792 and Lab.ICA -0.4954). Gap to winner: 0.0206 score, 1.2 points accuracy. Tuning + blending was worth more than all feature fixes combined.
+- **v6 test: rare-rock weight x2** (Nov 27 04:51 UTC): Limestone up 57->66%, anhydrite 58->62%, but overall score a hair worse (-0.5731 vs -0.5724).
+- **v6 test: rare-rock weight x4** (Nov 27 04:58 UTC): Limestone 69% but anhydrite fell to 37%; too many false limestone calls cost penalty points.
+- **v6 test: rare-rock weight x8** (Nov 27 05:04 UTC): Same as x4, slightly worse overall.
+- **v6 rare-rock weighting** (Nov 27 06:40 UTC): Open test picked no extra weight (x1), so v6 is a fresh rebuild of v5's blend. Hidden -0.4990 vs v5 -0.4896: the difference is run-to-run randomness, not a real change. Would rank 4th of 14 (3rd is -0.4954). v5 stays the best. Lesson: simple re-weighting doesn't fix anhydrite; the rock looks like other rocks on these logs, so it needs new features (e.g. density/sonic patterns, neighbour-layer context) not more weight.
 
 ## FORGE DAS (earthquakes)
 

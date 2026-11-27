@@ -1,0 +1,19 @@
+{
+  "score": -0.4989960946755231,
+  "accuracy": 0.7911386716994697,
+  "rare_weight": 1.0,
+  "per_class": {
+    "sandstone": 0.794,
+    "shale": 0.938,
+    "sandstone/shale": 0.281,
+    "limestone": 0.592,
+    "chalk": 0.354,
+    "dolomite": 0.0,
+    "marl": 0.323,
+    "anhydrite": 0.333,
+    "halite": 0.965,
+    "coal": 0.775,
+    "tuff": 0.847
+  },
+  "minutes": 121.4
+}
